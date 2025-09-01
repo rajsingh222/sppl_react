@@ -101,3 +101,23 @@
   0% { transform: translateY(0); }
   100% { transform: translateY(-50%); }
 }
+
+.top-info-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px; /* Adjust as needed */
+  z-index: 50;
+  background: #f8fafc;
+}
+
+.navbar {
+  position: fixed;
+  top: 40px; /* Same as .top-info-bar height */
+  left: 0;
+  width: 100%;
+  height: 64px; /* Adjust as needed */
+  z-index: 100;
+  background: #fff;
+}

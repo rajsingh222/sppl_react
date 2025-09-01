@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const CaretDown = ({ className = "h-4 w-4" }) => (
   <svg className={className} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -6,7 +7,31 @@ const CaretDown = ({ className = "h-4 w-4" }) => (
   </svg>
 );
 
-const Navbar = () => {
+export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [activeItem, setActiveItem] = useState('home');
+  const [openDrops, setOpenDrops] = useState({});
+
+  // Sync active item with current route/hash when they change
+  useEffect(() => {
+    if (location.pathname === '/products') {
+      setActiveItem('products');
+      return;
+    }
+    if (location.pathname === '/projects') {
+      setActiveItem('projects');
+      return;
+    }
+    if (location.pathname.startsWith('/about')) {
+      setActiveItem('about');
+      return;
+    }
+    if (location.pathname === '/') {
+      setActiveItem('home');
+      return;
+    }
+  }, [location.pathname, location.hash]);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -14,37 +39,46 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname, location.hash]);
+
+  const toggleDropdown = (label) => {
+    setOpenDrops(prev => ({ ...prev, [label]: !prev[label] }));
+  };
+
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about', dropdown: [
-      { label: 'Item 1', href: '#about-1' },
-      { label: 'Item 2', href: '#about-2' },
-      { label: 'Item 3', href: '#about-3' },
-      { label: 'Item 4', href: '#about-4' },
-      { label: 'Item 5', href: '#about-5' },
-      { label: 'Item 6', href: '#about-6' },
-      { label: 'Item 7', href: '#about-7' },
-      { label: 'Item 8', href: '#about-8' },
+    { label: 'Home', to: '/' },
+    { label: 'About', to: '/about', dropdown: [
+      { label: 'About SPPL', to: '/about' },
+      { label: 'Vision and Mission', to: '/about/vision-mission' },
+      { label: 'Our Scope', to: '/about/scope' },
+      { label: 'Innovation & Research', to: '/about/innovation-research' },
+      { label: 'Training & Consultation', to: '/about/training-consultation' },
+      { label: 'Process Features', to: '/about/process-features' },
+      { label: 'Business Policy', to: '/about/business-policy' },
+      { label: 'Rules for Clients and Partners', to: '/about/rules-clients-partners' },
     ]},
-    { label: 'Business Verticals', href: '#business-verticals', dropdown: [
-      { label: 'Vertical 1', href: '#bv-1' },
-      { label: 'Vertical 2', href: '#bv-2' },
+    { label: 'Business Verticals', to: '/#business-verticals', dropdown: [
+      { label: 'Vertical 1', to: '/#bv-1' },
+      { label: 'Vertical 2', to: '/#bv-2' },
     ]},
-    { label: 'Products', href: '#products' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Dashboard', href: '#dashboard' },
-    { label: 'Blogs', href: '#blogs' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Contact', href: '#contact', dropdown: [
-      { label: 'Email Us', href: '#contact-email' },
-      { label: 'Locations', href: '#contact-locations' },
+    { label: 'Products', to: '/products' },
+    { label: 'Projects', to: '/projects' },
+    { label: 'Dashboard', to: '/#dashboard' },
+    { label: 'Blogs', to: '/#blogs' },
+    { label: 'Gallery', to: '/#gallery' },
+    { label: 'Contact', to: '/#contact', dropdown: [
+      { label: 'Email Us', to: '/#contact-email' },
+      { label: 'Locations', to: '/#contact-locations' },
     ]},
   ];
 
@@ -57,19 +91,18 @@ const Navbar = () => {
     : [];
 
   return (
-    <nav className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
-        : 'bg-white/90 backdrop-blur-sm border-b border-gray-100'
-    }`} style={{ top: isScrolled ? 0 : 36 }}>
-      <div className="w-full px-6 sm:px-8">
+    <nav
+      className="fixed left-0 right-0 z-[90] bg-white h-18 border-b border-gray-100 shadow-sm "
+      style={{ top: 'var(--topbar-offset)' }} // pushes down when TopInfoBar is visible
+    >
+      <div className="w-full px-4 sm:px-6">
         <div className="flex items-center h-20">
           {/* Logo and Company Name - pinned far left */}
           <div className="flex items-center space-x-2 ml-2 sm:ml-4 shrink-0">
             <img 
               src="/img/logo3.png" 
               alt="SPPL Logo" 
-              className="w-14 h-14 object-contain"
+              className="w-12 h-12 object-contain"
             />
             <div className="text-left">
               <div className="text-3xl font-bold text-sppl-blue leading-tight">SPPL India</div>
@@ -83,21 +116,57 @@ const Navbar = () => {
             <div className="flex items-center gap-x-1 whitespace-nowrap flex-1 justify-end">
               {navItems.map(item => (
                 <div key={item.label} className={`relative group`}>
-                  <a href={item.href} className={`nav-link-compact px-3 ${item.dropdown ? 'pr-8' : ''}`}>
+                  <Link
+                    to={item.to}
+                    className={`nav-link-compact px-3 ${item.dropdown ? 'pr-8' : ''} ${
+                      (activeItem === 'home' && item.to === '/') ||
+                      (activeItem === 'about' && item.to === '/about') ||
+                      (activeItem === 'products' && item.to === '/products') ||
+                      (activeItem === 'projects' && item.to === '/projects')
+                        ? 'bg-sppl-dark-blue text-white rounded-full'
+                        : ''
+                    }`}
+                    onClick={(e) => {
+                      // Handle Home link when already on '/'
+                      if (item.to === '/') {
+                        e.preventDefault();
+                        if (location.pathname !== '/') navigate('/');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        setActiveItem('home');
+                        return;
+                      }
+                      // About root and children
+                      if (item.to.startsWith('/about')) {
+                        setActiveItem('about');
+                      }
+                      if (item.to === '/products') setActiveItem('products');
+                      if (item.to === '/projects') setActiveItem('projects');
+                    }}
+                    aria-current={
+                      (activeItem === 'home' && item.to === '/') ||
+                      (activeItem === 'about' && item.to === '/about') ||
+                      (activeItem === 'products' && item.to === '/products') ||
+                      (activeItem === 'projects' && item.to === '/projects')
+                        ? 'page'
+                        : undefined
+                    }
+                  >
                     {item.label}
                     {item.dropdown && (
-                      <span className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 group-hover:text-white transition-colors">
+                      <span className={`absolute right-2 top-1/2 -translate-y-1/2 transition-colors ${
+                        (activeItem === 'about' && item.to === '/about') ? 'text-white' : 'text-gray-500 group-hover:text-white'
+                      }`}>
                         <CaretDown className="h-4 w-4" />
                       </span>
                     )}
-                  </a>
+                  </Link>
                   {item.dropdown && (
                     <div className="pointer-events-none absolute left-0 mt-2 min-w-max w-56 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50">
                       <div className="rounded-2xl border border-gray-200 bg-white/95 backdrop-blur-md shadow-xl p-2">
                         {item.dropdown.map(sub => (
-                          <a key={sub.label} href={sub.href} className="dropdown-item">
+                          <Link key={sub.label} to={sub.to} className="dropdown-item">
                             {sub.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -139,10 +208,10 @@ const Navbar = () => {
                     {filtered.length > 0 ? (
                       <div className="max-h-64 overflow-auto">
                         {filtered.map(res => (
-                          <a key={(res.parent ? res.parent + '-' : '') + res.label} href={res.href} className="dropdown-item">
+                          <Link key={(res.parent ? res.parent + '-' : '') + res.label} to={res.to} className="dropdown-item">
                             {res.parent && <span className="text-gray-400 mr-2">{res.parent} ›</span>}
                             {res.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     ) : (
@@ -153,10 +222,108 @@ const Navbar = () => {
               )}
             </div>
           </div>
+
+          {/* Mobile hamburger */}
+          <div className="md:hidden ml-auto mr-1">
+            <button
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              onClick={() => setIsMobileMenuOpen((s) => !s)}
+              className="p-2 rounded-lg text-gray-700 hover:text-white hover:bg-sppl-dark-blue bg-gray-100 transition-colors"
+            >
+              {isMobileMenuOpen ? (
+                // X icon
+                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                // Hamburger icon
+                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu panel */}
+      <div
+        className={`md:hidden absolute left-0 right-0 top-20 origin-top bg-white border-t border-gray-100 shadow-xl transition-all duration-200 ${
+          isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
+        }`}
+      >
+        <div className="px-4 py-3 space-y-1">
+          {navItems.map((item) => {
+            const isDrop = !!item.dropdown;
+            const isOpen = !!openDrops[item.label];
+            return (
+              <div key={item.label} className="">
+                <div className="flex items-center">
+                  <Link
+                    to={item.to}
+                    className={`flex-1 px-3 py-2 rounded-lg text-gray-800 hover:bg-gray-50 ${
+                      (activeItem === 'home' && item.to === '/') ||
+                      (activeItem === 'about' && item.to.startsWith('/about')) ||
+                      (activeItem === 'products' && item.to === '/products') ||
+                      (activeItem === 'projects' && item.to === '/projects')
+                        ? 'bg-sppl-dark-blue text-white'
+                        : ''
+                    }`}
+                    onClick={(e) => {
+                      if (item.to === '/') {
+                        e.preventDefault();
+                        if (location.pathname !== '/') navigate('/');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        setActiveItem('home');
+                        setIsMobileMenuOpen(false);
+                        return;
+                      }
+                      if (item.to.startsWith('/about')) setActiveItem('about');
+                      if (item.to === '/products') setActiveItem('products');
+                      if (item.to === '/projects') setActiveItem('projects');
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                  {isDrop && (
+                    <button
+                      className="ml-2 p-2 text-gray-600 hover:text-sppl-blue"
+                      aria-expanded={isOpen}
+                      aria-controls={`mobile-drop-${item.label}`}
+                      onClick={() => toggleDropdown(item.label)}
+                    >
+                      <CaretDown className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                  )}
+                </div>
+                {isDrop && (
+                  <div
+                    id={`mobile-drop-${item.label}`}
+                    className={`pl-3 mt-1 space-y-1 overflow-hidden transition-all ${
+                      isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    {item.dropdown.map((sub) => (
+                      <Link
+                        key={sub.label}
+                        to={sub.to}
+                        className="block px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50"
+                        onClick={() => {
+                          setActiveItem(item.label.toLowerCase());
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </nav>
   );
 };
-
-export default Navbar;

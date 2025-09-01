@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const IconLocation = ({ className = 'h-4 w-4' }) => (
   <svg className={className + ' text-sppl-blue'} viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -20,17 +20,18 @@ const IconMail = ({ className = 'h-4 w-4' }) => (
   </svg>
 );
 
-const TopInfoBar = () => {
-  const [hidden, setHidden] = useState(false);
+const INFO_BAR_HEIGHT_PX = 36; // matches h-9
 
+const TopInfoBar = ({ show }) => {
   useEffect(() => {
-    const onScroll = () => setHidden(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    document.documentElement.style.setProperty(
+      '--topbar-offset',
+      show ? `${INFO_BAR_HEIGHT_PX}px` : '0px'
+    );
+  }, [show]);
 
   return (
-    <div className={`fixed top-0 left-0 right-0 z-[60] transition-transform duration-300 ${hidden ? '-translate-y-full' : 'translate-y-0'}`}>
+    <div className={`fixed top-0 left-0 right-0 z-[100] transition-transform duration-300 ${show ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="w-full bg-white/95 backdrop-blur-md border-b border-sppl-blue/20">
         <div className="w-full px-6 sm:px-8">
           <div className="flex items-center justify-between h-9 text-[13px] text-gray-900">
@@ -48,3 +49,7 @@ const TopInfoBar = () => {
 };
 
 export default TopInfoBar;
+
+/* Example CSS for Top Info Bar and Navbar */
+// filepath: c:\Users\Sanrachna Prahari 3\sppl-website\client\src\index.css
+
