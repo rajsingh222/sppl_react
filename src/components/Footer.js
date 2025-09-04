@@ -53,11 +53,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950 text-white">
       {/* Logo Slider (above footer content) */}
-      <div className="bg-gray-50 border-t border-b border-gray-200 -mt-2 md:-mt-4">
+      <div className="bg-gray-50 border-t border-b border-gray-200/70 -mt-2 md:-mt-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden" aria-label="Partner logos">
             {/* Edge fades */}
             <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-gray-50 to-transparent z-10" />
             <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-gray-50 to-transparent z-10" />
@@ -67,13 +67,19 @@ const Footer = () => {
                 <div key={dupIdx} className="flex items-center gap-6 shrink-0">
           {logos.map((file, i) => {
                     const src = encodeURI(`/logo/${file}`);
+                    const label = file.replace(/\.[^/.]+$/, '').replace(/[_-]+/g, ' ');
                     return (
-            <div key={`${dupIdx}-${i}`} className="h-20 w-48 md:w-56 flex items-center justify-center bg-white rounded-xl border border-gray-200 shadow-sm p-4 transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-md">
+            <div key={`${dupIdx}-${i}`} className="h-16 w-40 md:w-48 flex items-center justify-center bg-white/80 backdrop-blur rounded-xl border border-gray-200/60 shadow-sm p-3 opacity-90 hover:opacity-100 transition">
                         <img
                           src={src}
-                          alt={file}
-              className="max-h-16 w-auto object-contain"
+                          alt={label}
+              className="max-h-12 w-auto object-contain"
                           loading="lazy"
+                          decoding="async"
+                          onError={(e) => {
+                            const card = e.currentTarget.parentElement;
+                            if (card) card.classList.add('hidden');
+                          }}
                         />
                       </div>
                     );
@@ -86,14 +92,15 @@ const Footer = () => {
       </div>
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-10" />
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-sppl-blue rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
+              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-sppl-blue to-sppl-dark-blue flex items-center justify-center ring-1 ring-white/10">
+                <span className="text-white font-bold text-lg">S</span>
               </div>
-              <span className="text-2xl font-bold">SPPL</span>
+              <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue">SPPL</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-6 max-w-md">
               Pioneering the future of structural health monitoring through advanced 
@@ -101,14 +108,14 @@ const Footer = () => {
             </p>
             
             {/* Social Media */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-3">
               {socialMedia.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 hover:bg-sppl-blue rounded-full flex items-center justify-center transition-colors duration-200 group"
+                  className="w-10 h-10 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors duration-200 group ring-1 ring-white/10"
                 >
                   <span className="text-lg group-hover:scale-110 transition-transform duration-200">
                     {social.icon}
@@ -120,13 +127,13 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Company</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-300/80 mb-4">Company</h3>
+            <ul className="space-y-2.5">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -137,13 +144,13 @@ const Footer = () => {
 
           {/* Services Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-300/80 mb-4">Services</h3>
+            <ul className="space-y-2.5">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -154,13 +161,13 @@ const Footer = () => {
 
           {/* Resources Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-300/80 mb-4">Resources</h3>
+            <ul className="space-y-2.5">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
                   >
                     {link.name}
                   </a>
@@ -173,7 +180,7 @@ const Footer = () => {
         {/* Newsletter Signup */}
         <div className="mt-12 pt-8 border-t border-gray-800">
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-xl font-semibold mb-2">Stay Updated</h3>
+            <h3 className="text-xl font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue">Stay Updated</h3>
             <p className="text-gray-300 mb-6">
               Subscribe to our newsletter for the latest updates on structural health monitoring technology.
             </p>
@@ -181,9 +188,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-sppl-blue focus:border-transparent text-white placeholder-gray-400"
+                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-sppl-blue focus:border-transparent text-white placeholder-gray-400"
               />
-              <button className="btn-primary whitespace-nowrap">
+              <button className="whitespace-nowrap inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white px-5 py-3 shadow-sm hover:shadow-md transition">
                 Subscribe
               </button>
             </div>
@@ -192,10 +199,10 @@ const Footer = () => {
   </div>
 
   {/* Bottom Footer */}
-      <div className="bg-gray-950 py-6">
+  <div className="bg-gray-950 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
+    <div className="text-gray-400 text-sm">
               © {currentYear} SPPL. All rights reserved. | Structural Health Monitoring Solutions
             </div>
             
@@ -204,7 +211,7 @@ const Footer = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
+      className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {link.name}
                 </a>

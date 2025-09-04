@@ -53,9 +53,9 @@ const About = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="section-title relative inline-block text-3xl md:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600">
+          <h2 className="section-title relative inline-block text-3xl md:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-sppl-blue via-sky-600 to-sppl-dark-blue">
             About SPPL
-            <span className="block mt-3 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-emerald-500"></span>
+            <span className="block mt-3 h-1 w-28 mx-auto rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue"></span>
           </h2>
           <p className="text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
            An IIT Delhi incubated company with leading expertise in technical operations and research

@@ -171,10 +171,10 @@ const Products = () => {
       description: "Mobile and transportable monitoring solutions for field operations",
       category: "Portable",
       cards: [
-  { id: "xWave-Ambient", image: "📱", name: "xWave-Ambient", description: "Portable Digital Accelerometer Unit", imgSrc: "/products/items/port11-photoroom.jpg" },
-  { id: "xPlorer-Ambient", image: "💻", name: "xPlorer-Ambient", description: "Central Portable Acquisition Unit Unit" ,imgSrc: "/products/items/port215-photoroom.jpg"},
-  { id: "Carry Box", image: "📦", name: "Carry Box", description: "Ambient Equipment Carry Box" ,imgSrc: "/products/items/portable/portable2-16.png"},
-  { id: "xNet-Ambient", image: "🔋", name: "xNet-Ambient", description: "Portable Network Unit",imgSrc: "/products/items/xNet-Photoroom.jpg" },
+  { id: "xWave-Ambient", name: "xWave-Ambient", description: "Portable Digital Accelerometer Unit", imgSrc: "/products/items/port11-photoroom.jpg" },
+  { id: "xPlorer-Ambient", name: "xPlorer-Ambient", description: "Central Portable Acquisition Unit Unit" ,imgSrc: "/products/items/port215-photoroom.jpg"},
+  { id: "Carry Box",  name: "Carry Box", description: "Ambient Equipment Carry Box" ,imgSrc: "/products/items/portable/portable2-16.png"},
+  { id: "xNet-Ambient", name: "xNet-Ambient", description: "Portable Network Unit",imgSrc: "/products/items/xNet-Photoroom.jpg" },
 
       ]
     },

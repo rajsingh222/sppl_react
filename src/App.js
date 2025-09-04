@@ -15,6 +15,7 @@ import Highlights from './components/Highlights';
 import TopInfoBar from './components/TopInfoBar';
 import { useRef } from 'react';
 import Testimonials from './components/Testimonials';
+import WhyChooseUs from './components/WhyChooseUs';
 import AboutPage from './pages/about/AboutPage';
 import VisionMission from './pages/about/VisionMission';
 import OurScope from './pages/about/OurScope';
@@ -116,6 +117,7 @@ function App() {
               </div>
               <Highlights />
               <About />
+              <WhyChooseUs />
               <Testimonials />
               <Footer/>
               {/* <BusinessVerticals />

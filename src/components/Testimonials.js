@@ -179,7 +179,12 @@ const Testimonials = () => {
 		<section id="testimonials" className="relative py-16 sm:py-20 bg-gradient-to-br from-white via-green-50 to-sky-50" aria-label="Testimonials">
 			<div className="max-w-7xl mx-auto px-6">
 				<div className="text-center mb-10 sm:mb-14">
-					<h2 className="text-3xl md:text-4xl font-bold text-gray-900">What our partners say</h2>
+					<h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+						<span className="bg-clip-text text-transparent bg-gradient-to-r from-sppl-blue via-sky-600 to-sppl-dark-blue">What our partners say</span>
+					</h2>
+					<div className="mt-3 flex justify-center">
+						<div className="h-1 w-28 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
+					</div>
 					<p className="mt-3 text-gray-600 max-w-2xl mx-auto">Real outcomes from real deployments — reliability, clarity, and speed.</p>
 				</div>
 
