@@ -20,6 +20,24 @@ const IconMail = ({ className = 'h-4 w-4' }) => (
   </svg>
 );
 
+const IconFacebook = ({ className = 'h-4 w-4' }) => (
+  <svg className={className + ' text-sppl-blue'} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M13.5 9H16V6h-2.5C11.57 6 10 7.57 10 9.5V11H8v3h2v6h3v-6h2.1l.4-3H13v-1.5c0-.28.22-.5.5-.5z" />
+  </svg>
+);
+
+const IconLinkedIn = ({ className = 'h-4 w-4' }) => (
+  <svg className={className + ' text-sppl-blue'} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M6.94 7.5A1.94 1.94 0 115 5.56 1.94 1.94 0 016.94 7.5zM5.5 9h2.9v9.5H5.5zM10.5 9h2.78v1.3h.04c.39-.7 1.33-1.43 2.74-1.43 2.93 0 3.47 1.93 3.47 4.45v5.18h-2.9v-4.6c0-1.1-.02-2.52-1.53-2.52-1.54 0-1.77 1.2-1.77 2.44v4.68H10.5z" />
+  </svg>
+);
+
+const IconInstagram = ({ className = 'h-4 w-4' }) => (
+  <svg className={className + ' text-sppl-blue'} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm0 2.5A2.5 2.5 0 1112 15a2.5 2.5 0 010-5zM18 6.8a1 1 0 100 2 1 1 0 000-2z" />
+  </svg>
+);
+
 const INFO_BAR_HEIGHT_PX = 36; // matches h-9
 
 const TopInfoBar = ({ show }) => {
@@ -40,7 +58,38 @@ const TopInfoBar = ({ show }) => {
               <div className="hidden md:flex items-center gap-2 font-medium"><IconPhone /><a href="tel:+917055559999" className="hover:text-sppl-blue">+91 70555 59999</a></div>
               <div className="hidden sm:flex items-center gap-2 font-medium"><IconMail /><a href="mailto:ceo@spplindia.org" className="hover:text-sppl-blue">ceo@spplindia.org</a></div>
             </div>
-            <div className="hidden md:flex" />
+            <div className="hidden sm:flex items-center gap-3">
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="p-1.5 rounded-full bg-blue-50 hover:bg-blue-100 text-sppl-blue transition-colors"
+                title="Facebook"
+              >
+                <IconFacebook className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="p-1.5 rounded-full bg-blue-50 hover:bg-blue-100 text-sppl-blue transition-colors"
+                title="LinkedIn"
+              >
+                <IconLinkedIn className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="p-1.5 rounded-full bg-blue-50 hover:bg-blue-100 text-sppl-blue transition-colors"
+                title="Instagram"
+              >
+                <IconInstagram className="h-4 w-4" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -23,6 +23,14 @@ export default function Navbar() {
       setActiveItem('projects');
       return;
     }
+    if (location.pathname === '/blogs') {
+      setActiveItem('blogs');
+      return;
+    }
+    if (location.pathname === '/dashboard') {
+      setActiveItem('dashboard');
+      return;
+    }
     if (location.pathname.startsWith('/about')) {
       setActiveItem('about');
       return;
@@ -68,17 +76,19 @@ export default function Navbar() {
       { label: 'Rules for Clients and Partners', to: '/about/rules-clients-partners' },
     ]},
     { label: 'Business Verticals', to: '/#business-verticals', dropdown: [
-      { label: 'Vertical 1', to: '/#bv-1' },
-      { label: 'Vertical 2', to: '/#bv-2' },
+      { label: 'Product', to: '/#bv-1' },
+      { label: 'Services', to: '/#bv-2' },
+      { label: 'Research and Development', to: '/#bv-3' },
     ]},
     { label: 'Products', to: '/products' },
     { label: 'Projects', to: '/projects' },
-    { label: 'Dashboard', to: '/#dashboard' },
-    { label: 'Blogs', to: '/#blogs' },
+  { label: 'Blogs', to: '/blogs' },
+  { label: 'Dashboard', to: '/dashboard' },
     { label: 'Gallery', to: '/#gallery' },
     { label: 'Contact', to: '/#contact', dropdown: [
-      { label: 'Email Us', to: '/#contact-email' },
-      { label: 'Locations', to: '/#contact-locations' },
+      { label: 'Client', to: '/#contact-client' },
+      { label: 'Partnership', to: '/#contact-partnership' },
+      { label: 'Organisation', to: '/#contact-organisation' },
     ]},
   ];
 
@@ -117,12 +127,14 @@ export default function Navbar() {
               {navItems.map(item => (
                 <div key={item.label} className={`relative group`}>
                   <Link
-                    to={item.to}
+                    to={(item.to === '/products' && location.search.includes('section=')) ? `/products${location.search}` : item.to}
                     className={`nav-link-compact px-3 ${item.dropdown ? 'pr-8' : ''} ${
                       (activeItem === 'home' && item.to === '/') ||
                       (activeItem === 'about' && item.to === '/about') ||
                       (activeItem === 'products' && item.to === '/products') ||
                       (activeItem === 'projects' && item.to === '/projects')
+                      || (activeItem === 'blogs' && item.to === '/blogs')
+                      || (activeItem === 'dashboard' && item.to === '/dashboard')
                         ? 'bg-sppl-dark-blue text-white rounded-full'
                         : ''
                     }`}
@@ -141,12 +153,15 @@ export default function Navbar() {
                       }
                       if (item.to === '/products') setActiveItem('products');
                       if (item.to === '/projects') setActiveItem('projects');
+                      if (item.to === '/dashboard') setActiveItem('dashboard');
                     }}
                     aria-current={
                       (activeItem === 'home' && item.to === '/') ||
                       (activeItem === 'about' && item.to === '/about') ||
                       (activeItem === 'products' && item.to === '/products') ||
                       (activeItem === 'projects' && item.to === '/projects')
+                      || (activeItem === 'blogs' && item.to === '/blogs')
+                      || (activeItem === 'dashboard' && item.to === '/dashboard')
                         ? 'page'
                         : undefined
                     }

@@ -5,12 +5,16 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './pages/Projects';
 import Products from './pages/Products';
+import ProductDetails from './pages/ProductDetails';
+import Dashboard from './pages/Dashboard';
+import Blogs from './pages/Blogs';
 import BusinessVerticals from './components/BusinessVerticals';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Highlights from './components/Highlights';
 import TopInfoBar from './components/TopInfoBar';
 import { useRef } from 'react';
+import Testimonials from './components/Testimonials';
 import AboutPage from './pages/about/AboutPage';
 import VisionMission from './pages/about/VisionMission';
 import OurScope from './pages/about/OurScope';
@@ -112,6 +116,8 @@ function App() {
               </div>
               <Highlights />
               <About />
+              <Testimonials />
+              <Footer/>
               {/* <BusinessVerticals />
               <Contact />
               <Footer /> */}
@@ -126,16 +132,18 @@ function App() {
           <Route path="/about/process-features" element={<ProcessFeatures />} />
           <Route path="/about/business-policy" element={<BusinessPolicy />} />
           <Route path="/about/rules-clients-partners" element={<RulesClientsPartners />} />
-          <Route path="/products" element={
-            <>
-              <Products />
-              {/* Add shared layout/components here if needed */}
-            </>
-          } />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/projects" element={
             <>
               <Projects />
               {/* Add shared layout/components here if needed */}
+            </>
+          } />
+          <Route path="/blogs" element={
+            <>
+              <Blogs />
             </>
           } />
         </Routes>
