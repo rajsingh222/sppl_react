@@ -19,7 +19,7 @@ export default function BusinessPolicy() {
           </div>
         </div>
         <section className="py-16">
-          <div className="max-w-5xl mx-auto px-6 text-gray-700 space-y-4">
+          <div className="max-w-5xl mx-auto px-6 text-gray-800 space-y-4">
             <p>We maintain transparency, fairness, and quality in all client engagements.</p>
           </div>
         </section>

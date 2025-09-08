@@ -55,7 +55,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950 text-white">
       {/* Logo Slider (above footer content) */}
-      <div className="bg-gray-50 border-t border-b border-gray-200/70 -mt-2 md:-mt-4">
+  <div className="bg-gray-50 border-t border-b border-gray-200/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="relative overflow-hidden" aria-label="Partner logos">
             {/* Edge fades */}

@@ -24,6 +24,13 @@ import TrainingConsultation from './pages/about/TrainingConsultation';
 import ProcessFeatures from './pages/about/ProcessFeatures';
 import BusinessPolicy from './pages/about/BusinessPolicy';
 import RulesClientsPartners from './pages/about/RulesClientsPartners';
+import BusinessProduct from './pages/BusinessProduct';
+import BusinessServices from './pages/BusinessServices';
+import BusinessResearch from './pages/BusinessResearch';
+import BuildingHealthMonitoring from './pages/solutions/BuildingHealthMonitoring';
+import Bridges from './pages/solutions/Bridges';
+import Track from './pages/solutions/Track';
+import Tunnel from './pages/solutions/Tunnel';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -109,7 +116,7 @@ function App() {
         <div className="cursor-glow" style={{ transform: `translate(${cursorPos.x - 12}px, ${cursorPos.y - 12}px)` }} />
         <TopInfoBar show={showTopInfoBar} />
         <Navbar />
-        <Routes>
+  <Routes>
           <Route path="/" element={
             <>
               <div ref={heroRef}>
@@ -136,6 +143,15 @@ function App() {
           <Route path="/about/rules-clients-partners" element={<RulesClientsPartners />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetails />} />
+          {/* Business Verticals pages */}
+          <Route path="/business-verticals/product" element={<BusinessProduct />} />
+          <Route path="/business-verticals/services" element={<BusinessServices />} />
+          <Route path="/business-verticals/research" element={<BusinessResearch />} />
+          {/* Solutions pages */}
+          <Route path="/solutions/building-health-monitoring" element={<BuildingHealthMonitoring />} />
+          <Route path="/solutions/bridges" element={<Bridges />} />
+          <Route path="/solutions/track" element={<Track />} />
+          <Route path="/solutions/tunnel" element={<Tunnel />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/projects" element={
             <>

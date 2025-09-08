@@ -19,7 +19,7 @@ export default function InnovationResearch() {
           </div>
         </div>
         <section className="py-16">
-          <div className="max-w-5xl mx-auto px-6 text-gray-700 space-y-4">
+          <div className="max-w-5xl mx-auto px-6 text-gray-800 space-y-4">
             <p>We innovate at the intersection of sensing, analytics, and infrastructure engineering.</p>
           </div>
         </section>

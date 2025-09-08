@@ -19,7 +19,7 @@ export default function ProcessFeatures() {
           </div>
         </div>
         <section className="py-16">
-          <div className="max-w-5xl mx-auto px-6 text-gray-700 space-y-4">
+          <div className="max-w-5xl mx-auto px-6 text-gray-800 space-y-4">
             <p>Reliability, data integrity, and actionable insights are at the core of our process.</p>
           </div>
         </section>

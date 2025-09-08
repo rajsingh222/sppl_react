@@ -158,7 +158,14 @@ const productData = [
 'High precision and long-term dependability with simple installation.'
 ], imgSrc: '/products/items/cent9-photoroom.jpg' },
   // All-in-One
-  { id: 'xWave Max', name: 'xWave Max', category: 'All-in-One',  overview: 'The xWave Max represents a new benchmark in Structural Health Monitoring (SHM). This fully digital standalone unit is engineered for harsh environments and confined spaces, delivering precise control and advanced data acquisition in a compact rugged design. With an operating range from -40 °C to +55 °C and compliance with international safety and EMC standards, it is a reliable choice for a wide variety of SHM applications.',
+  { id: 'xWave Max', name: 'Digital Standalone Unit', category: 'All-in-One',  overview: 'This System represents a new benchmark in Structural Health Monitoring (SHM). This fully digital standalone unit is engineered for harsh environments and confined spaces, delivering precise control and advanced data acquisition in a compact rugged design. With an operating range from -40 °C to +55 °C and compliance with international safety and EMC standards, it is a reliable choice for a wide variety of SHM applications.',
+      features: [
+        'Fully digital standalone acquisition & processing',
+        'Rugged compact enclosure for harsh environments',
+        'Wide operating temperature (-40°C to +55°C)',
+        'Integrated storage & edge analytics',
+        'Standards compliant safety & EMC design'
+      ],
       imgSrc: '/products/download/image.png' },
   // Portable
   { id: 'xWave-Ambient', name: 'xWave-Ambient', category: 'Portable', overview: 'Introducing a next-generation wireless solution for Structural Health Monitoring. With a self-healing algorithm, the system ensures seamless data transmission, even if some sensors temporarily lose connection. Devices communicate directly with each other, enhancing reliability and reducing dependency on gateways. Supporting standard Wi-Fi protocols (802.11n/g/b), it enables easy coverage extension and hassle-free sensor connectivity—no advanced network expertise required. Designed with portability in mind, its 12+ hour battery life makes it ideal for field measurements. Upgrade your SHM system with a smarter, more reliable wireless network.',
@@ -183,8 +190,8 @@ const productData = [
 'Compatible with Pulse units and other wireless monitoring devices.'
 ], imgSrc: '/products/items/xNet-Photoroom.jpg' },
   // User-Focused
-  { id: 'Pulse', name: 'Pulse', category: 'User-Focused',  imgSrc: '/products/items/Pulse-Photoroom (1).jpg' },
-  { id: 'xPlorer', name: 'xPlorer', category: 'User-Focused', imgSrc: '/products/items/xplo-Photoroom.jpg' },
+  { id: 'Pulse', name: 'Pulse', category: 'User-Focused',  overview: 'Personalized structural health monitoring dashboard delivering actionable real-time insights.', features: [ 'Customizable widgets', 'Real-time alerting', 'Analytics & reporting exports', 'Multi-role access control' ], imgSrc: '/products/items/Pulse-Photoroom (1).jpg' },
+  { id: 'xPlorer', name: 'xPlorer', category: 'User-Focused', overview: 'Adaptive intelligent interface that adjusts visualizations and controls to user context.', features: [ 'Context-aware UI', 'Seamless device scaling', 'Integrated data annotations', 'Fast search & filtering' ], imgSrc: '/products/items/xplo-Photoroom.jpg' },
   // Sensors
   { id: 'smart-sensors', name: 'Smart Sensors', category: 'Sensors',  overview: 'Our linearized velocitimeters are built using geophone cells with eigen-frequencies of either 4.5 Hz or 2 Hz. Although this approach has certain limitations, it allows achieving a flat response bandwidth that extends beyond the geophone’s natural band by shifting the eigen-frequency to a lower value. This technique is particularly effective for noise surveys, as the sensors demonstrate improved tolerance to tilting. Additionally, the high amplification factor (400 V/m/s) is advantageous when working with low-cost digitizers with poor signal-to-noise ratios or with older equipment.',
      features: ['Extended flat bandwidth by lowering the eigen-frequency beyond the geophone’s natural band.',
@@ -263,7 +270,7 @@ const ProductDetails = () => {
               <section>
                 <h2 className="text-2xl font-semibold text-sppl-blue mb-2">Key Features</h2>
                 <ul className="space-y-2 bg-white rounded-xl p-6 shadow border border-gray-100">
-                  {product.features.map((f, i) => (
+                  {(product.features || []).map((f, i) => (
                     <li key={i} className="flex items-start gap-3 text-gray-800 leading-relaxed">
                       <span aria-hidden="true" className="mt-1 w-3 h-3 rounded-full bg-sppl-dark-blue ring-2 ring-sppl-blue/30 shadow-sm flex-shrink-0"></span>
                       <span>{f}</span>

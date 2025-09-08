@@ -1,27 +1,76 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import Reveal from '../../components/Reveal';
 
 export default function VisionMission() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100">
       <Navbar />
       <div className="pt-20">
-        <div className="relative text-center py-16 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white overflow-hidden">
+  <div className="relative text-center py-16 md:py-20 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white overflow-hidden">
           <div className="pointer-events-none absolute inset-0 opacity-60">
             <div className="absolute -top-10 -left-10 w-64 h-64 bg-gradient-to-br from-white/20 to-blue-200/30 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-16 -right-16 w-80 h-80 bg-gradient-to-br from-emerald-300/20 to-white/10 rounded-full blur-3xl"></div>
           </div>
           <div className="max-w-4xl mx-auto px-6">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Vision & Mission</h1>
-            <p className="text-lg md:text-xl text-blue-100">Our long-term vision and the mission that drives our work at SPPL.</p>
+            <Reveal>
+              <h1 className="text-4xl md:text-5xl font-bold mb-3">Vision & Mission</h1>
+            </Reveal>
+            <Reveal delay={80}>
+              <p className="text-lg md:text-xl text-blue-100">Safeguarding India’s infrastructure through innovation, research, and technology.</p>
+            </Reveal>
             <span className="block mt-6 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-white/60 to-blue-200/60"></span>
           </div>
         </div>
-        <section className="py-16">
-          <div className="max-w-5xl mx-auto px-6 text-gray-700 space-y-4">
-            <p>Vision: Safer, smarter, continuously monitored infrastructure across the nation.</p>
-            <p>Mission: Deliver reliable, data-driven SHM solutions that empower proactive maintenance and public safety.</p>
+        <section className="py-12 md:py-16">
+          <div className="max-w-5xl mx-auto px-6 space-y-8">
+            <Reveal>
+              <div className="bg-white/90 backdrop-blur rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-sppl-blue">At Sanrachna Prahari Pvt. Ltd.</h2>
+                <div className="mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
+                <p className="mt-4 text-gray-800 leading-relaxed">
+                  At Sanrachna Prahari Pvt. Ltd., we believe in safeguarding India’s civil infrastructure through innovation, research, and technology. Our vision, mission, and aim reflect our unwavering commitment to safety, sustainability, and excellence in Structural Health Monitoring (SHM).
+                </p>
+              </div>
+            </Reveal>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <Reveal>
+                <div className="h-full bg-white/90 backdrop-blur rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md">👁️</span>
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900">Vision Statement</h3>
+                  </div>
+                  <blockquote className="text-gray-800 leading-relaxed italic">
+                    “Ensuring safety, longevity, and sustainability of infrastructure through cutting-edge technology, innovative research, and world-class services in Structural Health Monitoring.”
+                  </blockquote>
+                </div>
+              </Reveal>
+              <Reveal delay={80}>
+                <div className="h-full bg-white/90 backdrop-blur rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md">🎯</span>
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900">Mission Statement</h3>
+                  </div>
+                  <blockquote className="text-gray-800 leading-relaxed italic">
+                    “To deliver advanced Structural Health Monitoring solutions using IoT-based, artificial neural network–supported sensor technology, empowering the nation to protect and enhance the safety and performance of infrastructure through expert consultation and uncompromising commitment to quality.”
+                  </blockquote>
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delay={120}>
+              <div className="bg-gradient-to-br from-blue-50 via-white to-sky-50 rounded-2xl border border-blue-100 shadow-sm p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md">🚀</span>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">Our Aim</h3>
+                </div>
+                <p className="text-gray-800 leading-relaxed">
+                  “To revolutionize the way infrastructure is monitored, maintained, and managed, ensuring resilience and sustainability for generations to come.”
+                </p>
+              </div>
+            </Reveal>
           </div>
         </section>
       </div>

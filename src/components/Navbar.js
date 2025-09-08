@@ -35,6 +35,14 @@ export default function Navbar() {
       setActiveItem('about');
       return;
     }
+    if (location.pathname.startsWith('/business-verticals')) {
+      setActiveItem('business verticals');
+      return;
+    }
+    if (location.pathname.startsWith('/solutions')) {
+      setActiveItem('solutions');
+      return;
+    }
     if (location.pathname === '/') {
       setActiveItem('home');
       return;
@@ -75,10 +83,16 @@ export default function Navbar() {
       { label: 'Business Policy', to: '/about/business-policy' },
       { label: 'Rules for Clients and Partners', to: '/about/rules-clients-partners' },
     ]},
-    { label: 'Business Verticals', to: '/#business-verticals', dropdown: [
-      { label: 'Product', to: '/#bv-1' },
-      { label: 'Services', to: '/#bv-2' },
-      { label: 'Research and Development', to: '/#bv-3' },
+    { label: 'Business Verticals', to: '/business-verticals/product', dropdown: [
+      { label: 'Product', to: '/business-verticals/product' },
+      { label: 'Services', to: '/business-verticals/services' },
+      { label: 'Research and Development', to: '/business-verticals/research' },
+    ]},
+    { label: 'Solutions', to: '/solutions/building-health-monitoring', dropdown: [
+      { label: 'Building Health Monitoring', to: '/solutions/building-health-monitoring' },
+      { label: 'Bridge Health Monitoring', to: '/solutions/bridges' },
+      { label: 'Track Health Monitoring', to: '/solutions/track' },
+      { label: 'Tunnel Health Monitoring', to: '/solutions/tunnel' },
     ]},
     { label: 'Products', to: '/products' },
     { label: 'Projects', to: '/projects' },
@@ -131,6 +145,8 @@ export default function Navbar() {
                     className={`nav-link-compact px-3 ${item.dropdown ? 'pr-8' : ''} ${
                       (activeItem === 'home' && item.to === '/') ||
                       (activeItem === 'about' && item.to === '/about') ||
+                      (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
+                      (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
                       (activeItem === 'products' && item.to === '/products') ||
                       (activeItem === 'projects' && item.to === '/projects')
                       || (activeItem === 'blogs' && item.to === '/blogs')
@@ -158,6 +174,8 @@ export default function Navbar() {
                     aria-current={
                       (activeItem === 'home' && item.to === '/') ||
                       (activeItem === 'about' && item.to === '/about') ||
+                      (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
+                      (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
                       (activeItem === 'products' && item.to === '/products') ||
                       (activeItem === 'projects' && item.to === '/projects')
                       || (activeItem === 'blogs' && item.to === '/blogs')
@@ -169,7 +187,10 @@ export default function Navbar() {
                     {item.label}
                     {item.dropdown && (
                       <span className={`absolute right-2 top-1/2 -translate-y-1/2 transition-colors ${
-                        (activeItem === 'about' && item.to === '/about') ? 'text-white' : 'text-gray-500 group-hover:text-white'
+                        (activeItem === 'about' && item.to === '/about') ||
+                        (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
+                        (activeItem === 'solutions' && item.to.startsWith('/solutions'))
+                          ? 'text-white' : 'text-gray-500 group-hover:text-white'
                       }`}>
                         <CaretDown className="h-4 w-4" />
                       </span>
@@ -279,6 +300,8 @@ export default function Navbar() {
                     className={`flex-1 px-3 py-2 rounded-lg text-gray-800 hover:bg-gray-50 ${
                       (activeItem === 'home' && item.to === '/') ||
                       (activeItem === 'about' && item.to.startsWith('/about')) ||
+                      (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
+                      (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
                       (activeItem === 'products' && item.to === '/products') ||
                       (activeItem === 'projects' && item.to === '/projects')
                         ? 'bg-sppl-dark-blue text-white'
@@ -294,6 +317,8 @@ export default function Navbar() {
                         return;
                       }
                       if (item.to.startsWith('/about')) setActiveItem('about');
+                      if (item.to.startsWith('/business-verticals')) setActiveItem('business verticals');
+                      if (item.to.startsWith('/solutions')) setActiveItem('solutions');
                       if (item.to === '/products') setActiveItem('products');
                       if (item.to === '/projects') setActiveItem('projects');
                       setIsMobileMenuOpen(false);
