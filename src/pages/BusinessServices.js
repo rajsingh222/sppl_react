@@ -1,22 +1,18 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Reveal from '../components/Reveal';
+// Reveal removed
 
 export default function BusinessServices() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100">
-      <Navbar />
-      <div className="pt-20">
+  <div>
         {/* Hero */}
         <section className="relative overflow-hidden">
           <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-sky-200/40 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-blue-200/40 blur-3xl" />
           <div className="text-center py-16 md:py-20 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white">
             <div className="max-w-4xl mx-auto px-6">
-              <Reveal>
-                <h1 className="text-4xl md:text-5xl font-bold mb-2">Services</h1>
-              </Reveal>
+              <h1 className="text-4xl md:text-5xl font-bold mb-2">Services</h1>
               {/* Keep only the main heading for consistency with Product page */}
             </div>
           </div>
@@ -25,7 +21,6 @@ export default function BusinessServices() {
   {/* Content */}
   <div className="max-w-5xl mx-auto px-4 md:px-6 py-12 space-y-12">
           {/* Overview */}
-          <Reveal>
             <section className="max-w-3xl mx-auto">
               <div className="bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
                 <h2 className="text-2xl md:text-3xl font-bold text-sppl-blue">Comprehensive Services for Smarter Infrastructure</h2>
@@ -34,16 +29,13 @@ export default function BusinessServices() {
                 </p>
               </div>
             </section>
-          </Reveal>
 
           {/* Our Key Services */}
           <section>
-            <Reveal>
               <div className="text-center mb-6">
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Our Key Services</h3>
                 <div className="mt-3 mx-auto h-1 w-28 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
               </div>
-            </Reveal>
 
             <div className="max-w-3xl mx-auto space-y-6">
               {[
@@ -93,8 +85,7 @@ export default function BusinessServices() {
                   ]
                 }
               ].map((s, i) => (
-                <Reveal key={s.title} delay={i * 70}>
-                  <div className="group relative bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-5 md:p-6 shadow-sm hover:shadow-md transition-all">
+                  <div key={s.title} className="group relative bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-5 md:p-6 shadow-sm hover:shadow-md transition-all">
                     <span className="absolute left-0 top-5 bottom-5 w-1 rounded-full bg-gradient-to-b from-sppl-blue to-sppl-dark-blue" />
                     <div className="flex items-start gap-4 pl-4">
                       <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md shrink-0">
@@ -113,7 +104,6 @@ export default function BusinessServices() {
                       </div>
                     </div>
                   </div>
-                </Reveal>
               ))}
             </div>
           </section>

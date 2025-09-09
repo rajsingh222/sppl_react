@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 // Image component with robust fallbacks for details page
@@ -237,7 +236,6 @@ const ProductDetails = () => {
   if (!product) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100 flex flex-col">
-        <Navbar />
         <div className="flex-1 flex items-center justify-center">
           <div className="bg-white rounded-xl shadow-lg p-8 text-center">
             <h2 className="text-2xl font-bold mb-4 text-sppl-blue">Product Not Found</h2>
@@ -251,8 +249,7 @@ const ProductDetails = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100 flex flex-col">
-      <Navbar />
-      <main className="flex-1 pt-20 pb-12">
+  <main className="flex-1 pb-12">
         <div className="text-center py-16 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white mb-10">
           <div className="max-w-4xl mx-auto px-6">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">{product.name}</h1>

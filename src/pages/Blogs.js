@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const BlogCard = ({ image, author, date, title, excerpt, link, containerClass = '' }) => (
@@ -91,8 +90,7 @@ const Blogs = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100">
-      <Navbar />
-      <div className="pt-20">
+  <div>
         {/* Hero */}
         <div className="text-center py-16 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white">
           <div className="max-w-3xl mx-auto px-6">

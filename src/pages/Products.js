@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useState } from 'react';
 
@@ -276,8 +275,7 @@ const Products = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100">
-      <Navbar />
-      <div className="pt-20">
+  <div>
         <div className="text-center py-16 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white">
           <div className="max-w-4xl mx-auto px-6">
              <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Products</h1>

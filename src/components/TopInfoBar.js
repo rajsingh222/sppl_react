@@ -49,8 +49,8 @@ const TopInfoBar = ({ show }) => {
   }, [show]);
 
   return (
-    <div className={`fixed top-0 left-0 right-0 z-[100] transition-transform duration-300 ${show ? 'translate-y-0' : '-translate-y-full'}`}>
-      <div className="w-full bg-white/95 backdrop-blur-md border-b border-sppl-blue/20">
+  <div className={`fixed top-0 left-0 right-0 z-[100] ${show ? '' : 'hidden'}`}>
+  <div className="w-full bg-white border-b border-sppl-blue/20">
         <div className="w-full px-6 sm:px-8">
           <div className="flex items-center justify-between h-9 text-[13px] text-gray-900">
             <div className="flex items-center gap-4">

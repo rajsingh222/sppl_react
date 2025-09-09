@@ -1,12 +1,10 @@
 import React from 'react';
-import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 export default function InnovationResearch() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100">
-      <Navbar />
-      <div className="pt-20">
+  <div>
         <div className="relative text-center py-16 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white overflow-hidden">
           <div className="pointer-events-none absolute inset-0 opacity-60">
             <div className="absolute -top-10 -left-10 w-64 h-64 bg-gradient-to-br from-white/20 to-blue-200/30 rounded-full blur-3xl"></div>

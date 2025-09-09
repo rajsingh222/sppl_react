@@ -10,44 +10,27 @@ const CaretDown = ({ className = "h-4 w-4" }) => (
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [activeItem, setActiveItem] = useState('home');
+
+  // Derive active item from current path to avoid initial flicker
+  const deriveActive = (path) => {
+    if (path === '/products') return 'products';
+    if (path === '/projects') return 'projects';
+    if (path === '/blogs') return 'blogs';
+    if (path === '/dashboard') return 'dashboard';
+    if (path.startsWith('/about')) return 'about';
+    if (path.startsWith('/business-verticals')) return 'business verticals';
+    if (path.startsWith('/solutions')) return 'solutions';
+    if (path === '/') return 'home';
+    return '';
+  };
+
+  const [activeItem, setActiveItem] = useState(() => deriveActive(location.pathname));
   const [openDrops, setOpenDrops] = useState({});
 
   // Sync active item with current route/hash when they change
   useEffect(() => {
-    if (location.pathname === '/products') {
-      setActiveItem('products');
-      return;
-    }
-    if (location.pathname === '/projects') {
-      setActiveItem('projects');
-      return;
-    }
-    if (location.pathname === '/blogs') {
-      setActiveItem('blogs');
-      return;
-    }
-    if (location.pathname === '/dashboard') {
-      setActiveItem('dashboard');
-      return;
-    }
-    if (location.pathname.startsWith('/about')) {
-      setActiveItem('about');
-      return;
-    }
-    if (location.pathname.startsWith('/business-verticals')) {
-      setActiveItem('business verticals');
-      return;
-    }
-    if (location.pathname.startsWith('/solutions')) {
-      setActiveItem('solutions');
-      return;
-    }
-    if (location.pathname === '/') {
-      setActiveItem('home');
-      return;
-    }
-  }, [location.pathname, location.hash]);
+    setActiveItem(deriveActive(location.pathname));
+  }, [location.pathname]);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -72,7 +55,6 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { label: 'Home', to: '/' },
     { label: 'About', to: '/about', dropdown: [
       { label: 'About SPPL', to: '/about' },
       { label: 'Vision and Mission', to: '/about/vision-mission' },
@@ -93,11 +75,13 @@ export default function Navbar() {
       { label: 'Bridge Health Monitoring', to: '/solutions/bridges' },
       { label: 'Track Health Monitoring', to: '/solutions/track' },
       { label: 'Tunnel Health Monitoring', to: '/solutions/tunnel' },
+      { label: 'Airport & Runways', to: '/solutions/airport' },
+      { label: 'Industries', to: '/solutions/industries' },
     ]},
     { label: 'Products', to: '/products' },
     { label: 'Projects', to: '/projects' },
-  { label: 'Blogs', to: '/blogs' },
-  { label: 'Dashboard', to: '/dashboard' },
+    { label: 'Blogs', to: '/blogs' },
+    { label: 'Dashboard', to: '/dashboard' },
     { label: 'Gallery', to: '/#gallery' },
     { label: 'Contact', to: '/#contact', dropdown: [
       { label: 'Client', to: '/#contact-client' },
@@ -116,23 +100,34 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed left-0 right-0 z-[90] bg-white h-18 border-b border-gray-100 shadow-sm "
+      className="fixed left-0 right-0 z-[90] bg-white h-20 border-b border-gray-100 shadow-sm "
       style={{ top: 'var(--topbar-offset)' }} // pushes down when TopInfoBar is visible
     >
-      <div className="w-full px-4 sm:px-6">
+  <div className="w-full px-4 sm:px-6">
         <div className="flex items-center h-20">
-          {/* Logo and Company Name - pinned far left */}
-          <div className="flex items-center space-x-2 ml-2 sm:ml-4 shrink-0">
+          {/* Logo and Company Name - pinned far left (clickable to go Home) */}
+          <Link
+            to="/"
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'auto' });
+                setActiveItem('home');
+              }
+            }}
+            className="flex items-center space-x-2 ml-2 sm:ml-4 shrink-0 cursor-pointer group"
+            aria-label="Go to home"
+          >
             <img 
               src="/img/logo3.png" 
               alt="SPPL Logo" 
-              className="w-12 h-12 object-contain"
+              className="w-12 h-12 object-contain transition-transform group-hover:scale-105"
             />
             <div className="text-left">
               <div className="text-3xl font-bold text-sppl-blue leading-tight">SPPL India</div>
               <div className="text-base text-gray-600">An IIT Delhi Company</div>
             </div>
-          </div>
+          </Link>
 
           {/* Right pane widened: starts slightly left of center, extends to right */}
           <div className="hidden md:flex items-center w-3/4 ml-auto">
@@ -155,11 +150,11 @@ export default function Navbar() {
                         : ''
                     }`}
                     onClick={(e) => {
-                      // Handle Home link when already on '/'
+                      // Home
                       if (item.to === '/') {
                         e.preventDefault();
                         if (location.pathname !== '/') navigate('/');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        window.scrollTo({ top: 0, behavior: 'auto' });
                         setActiveItem('home');
                         return;
                       }
@@ -167,9 +162,18 @@ export default function Navbar() {
                       if (item.to.startsWith('/about')) {
                         setActiveItem('about');
                       }
+                      // Solutions
+                      if (item.to.startsWith('/solutions')) {
+                        setActiveItem('solutions');
+                      }
+                      // Business Verticals
+                      if (item.to.startsWith('/business-verticals')) {
+                        setActiveItem('business verticals');
+                      }
                       if (item.to === '/products') setActiveItem('products');
                       if (item.to === '/projects') setActiveItem('projects');
                       if (item.to === '/dashboard') setActiveItem('dashboard');
+                      if (item.to === '/blogs') setActiveItem('blogs');
                     }}
                     aria-current={
                       (activeItem === 'home' && item.to === '/') ||
@@ -197,8 +201,8 @@ export default function Navbar() {
                     )}
                   </Link>
                   {item.dropdown && (
-                    <div className="pointer-events-none absolute left-0 mt-2 min-w-max w-56 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50">
-                      <div className="rounded-2xl border border-gray-200 bg-white/95 backdrop-blur-md shadow-xl p-2">
+                    <div className="pointer-events-none absolute left-0 mt-2 min-w-max w-56 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-[95]">
+                      <div className="rounded-xl border border-gray-200 bg-white/95 backdrop-blur-md shadow-xl p-2">
                         {item.dropdown.map(sub => (
                           <Link key={sub.label} to={sub.to} className="dropdown-item">
                             {sub.label}
@@ -284,8 +288,8 @@ export default function Navbar() {
 
       {/* Mobile menu panel */}
       <div
-        className={`md:hidden absolute left-0 right-0 top-20 origin-top bg-white border-t border-gray-100 shadow-xl transition-all duration-200 ${
-          isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
+        className={`md:hidden absolute left-0 right-0 top-20 bg-white border-t border-gray-100 shadow-xl ${
+          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none hidden'
         }`}
       >
         <div className="px-4 py-3 space-y-1">
@@ -303,7 +307,9 @@ export default function Navbar() {
                       (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
                       (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
                       (activeItem === 'products' && item.to === '/products') ||
-                      (activeItem === 'projects' && item.to === '/projects')
+                      (activeItem === 'projects' && item.to === '/projects') ||
+                      (activeItem === 'blogs' && item.to === '/blogs') ||
+                      (activeItem === 'dashboard' && item.to === '/dashboard')
                         ? 'bg-sppl-dark-blue text-white'
                         : ''
                     }`}
@@ -311,7 +317,7 @@ export default function Navbar() {
                       if (item.to === '/') {
                         e.preventDefault();
                         if (location.pathname !== '/') navigate('/');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        window.scrollTo({ top: 0, behavior: 'auto' });
                         setActiveItem('home');
                         setIsMobileMenuOpen(false);
                         return;
@@ -321,6 +327,8 @@ export default function Navbar() {
                       if (item.to.startsWith('/solutions')) setActiveItem('solutions');
                       if (item.to === '/products') setActiveItem('products');
                       if (item.to === '/projects') setActiveItem('projects');
+                      if (item.to === '/blogs') setActiveItem('blogs');
+                      if (item.to === '/dashboard') setActiveItem('dashboard');
                       setIsMobileMenuOpen(false);
                     }}
                   >

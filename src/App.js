@@ -16,6 +16,7 @@ import TopInfoBar from './components/TopInfoBar';
 import { useRef } from 'react';
 import Testimonials from './components/Testimonials';
 import WhyChooseUs from './components/WhyChooseUs';
+import KeyServices from './components/KeyServices';
 import AboutPage from './pages/about/AboutPage';
 import VisionMission from './pages/about/VisionMission';
 import OurScope from './pages/about/OurScope';
@@ -31,11 +32,14 @@ import BuildingHealthMonitoring from './pages/solutions/BuildingHealthMonitoring
 import Bridges from './pages/solutions/Bridges';
 import Track from './pages/solutions/Track';
 import Tunnel from './pages/solutions/Tunnel';
+import Airport from './pages/solutions/Airport';
+import Industries from './pages/solutions/Industries';
+
+// Reveal removed for instant rendering
+// Removed PageTransition for instant route changes
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
-  const [showTopInfoBar, setShowTopInfoBar] = useState(false);
   const heroRef = useRef(null);
 
   useEffect(() => {
@@ -43,30 +47,9 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  // Removed cursor glow mousemove handler to prevent frequent re-renders and visual artifacts
 
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        setShowTopInfoBar(entry.isIntersecting);
-      },
-      { threshold: 0.2 }
-    );
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-    return () => {
-      if (heroRef.current) {
-        observer.unobserve(heroRef.current);
-      }
-    };
-  }, [heroRef]);
+  // TopInfoBar logic moved to AppInner so it only runs on the Home route
 
   // Handles scrolling to hash targets like #about and scroll to top on route change
   const ScrollToHash = () => {
@@ -85,7 +68,7 @@ function App() {
             const header = document.querySelector('nav');
             const offset = (header?.offsetHeight || 0) + 8; // header height + small padding
             const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
+            window.scrollTo({ top: y, behavior: 'auto' });
             // Remove hash to avoid browser re-anchoring when layout changes
             try {
               const url = new URL(window.location.href);
@@ -109,62 +92,124 @@ function App() {
     return null;
   };
 
+  // Routes without crossfade transitions
+  const AnimatedRoutes = ({ isLoading, heroRef }) => {
+    const location = useLocation();
+    return (
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={
+          <>
+            <div ref={heroRef}>
+              <Hero isLoading={isLoading} />
+            </div>
+            {/* Sections now render instantly (no Reveal) */}
+            <Highlights />
+            <About />
+            <KeyServices />
+            <WhyChooseUs />
+            <Testimonials />
+            <Footer/>
+          </>
+        } />
+        {/* About pages */}
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/about/vision-mission" element={<VisionMission />} />
+        <Route path="/about/scope" element={<OurScope />} />
+        <Route path="/about/innovation-research" element={<InnovationResearch />} />
+        <Route path="/about/training-consultation" element={<TrainingConsultation />} />
+        <Route path="/about/process-features" element={<ProcessFeatures />} />
+        <Route path="/about/business-policy" element={<BusinessPolicy />} />
+        <Route path="/about/rules-clients-partners" element={<RulesClientsPartners />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        {/* Business Verticals pages */}
+        <Route path="/business-verticals/product" element={<BusinessProduct />} />
+        <Route path="/business-verticals/services" element={<BusinessServices />} />
+        <Route path="/business-verticals/research" element={<BusinessResearch />} />
+        {/* Solutions pages */}
+        <Route path="/solutions/building-health-monitoring" element={<BuildingHealthMonitoring />} />
+        <Route path="/solutions/bridges" element={<Bridges />} />
+        <Route path="/solutions/track" element={<Track />} />
+        <Route path="/solutions/tunnel" element={<Tunnel />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/solutions/airport" element={<Airport />} />
+        <Route path="/solutions/industries" element={<Industries />} />
+      </Routes>
+    );
+  };
+
+  // Render TopInfoBar only on home route and manage its scroll behavior locally
+  const AppInner = () => {
+    const location = useLocation();
+    const [showTopInfoBar, setShowTopInfoBar] = useState(false);
+
+    useEffect(() => {
+      if (location.pathname !== '/') {
+        setShowTopInfoBar(false);
+        try { document.documentElement.style.setProperty('--topbar-offset', '0px'); } catch {}
+        return;
+      }
+      let ticking = false;
+      let lastY = window.pageYOffset || 0;
+      const showRef = { current: false };
+      const computeInitial = () => {
+        let next = false;
+        try {
+          if (heroRef.current) {
+            const rect = heroRef.current.getBoundingClientRect();
+            const inView = rect.bottom > 0 && rect.top < window.innerHeight;
+            next = inView;
+          }
+        } catch {}
+        showRef.current = next;
+        setShowTopInfoBar(next);
+      };
+      requestAnimationFrame(computeInitial);
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = window.pageYOffset || 0;
+          const delta = y - lastY;
+          const goingUp = delta < -6;
+          const goingDown = delta > 6;
+          let nextShow = showRef.current;
+          if (goingUp) nextShow = true;
+          else if (goingDown) nextShow = false;
+          if (nextShow !== showRef.current) {
+            showRef.current = nextShow;
+            setShowTopInfoBar(nextShow);
+          }
+          lastY = y;
+          ticking = false;
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return () => window.removeEventListener('scroll', onScroll);
+    }, [location.pathname]);
+
+    const isHome = location.pathname === '/';
+    const contentTopPad = isHome ? 'pt-0' : 'pt-20'; // pad for fixed navbar on non-home
+
+    return (
+      <>
+        {isHome && <TopInfoBar show={showTopInfoBar} />}
+        <Navbar />
+        <div className={`relative z-10 overflow-hidden ${contentTopPad}`}>
+          <AnimatedRoutes isLoading={isLoading} heroRef={heroRef} />
+        </div>
+      </>
+    );
+  };
+
   return (
     <Router>
       <div className="App min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100 relative overflow-x-hidden">
-  <ScrollToHash />
-        <div className="cursor-glow" style={{ transform: `translate(${cursorPos.x - 12}px, ${cursorPos.y - 12}px)` }} />
-        <TopInfoBar show={showTopInfoBar} />
-        <Navbar />
-  <Routes>
-          <Route path="/" element={
-            <>
-              <div ref={heroRef}>
-                <Hero isLoading={isLoading} />
-              </div>
-              <Highlights />
-              <About />
-              <WhyChooseUs />
-              <Testimonials />
-              <Footer/>
-              {/* <BusinessVerticals />
-              <Contact />
-              <Footer /> */}
-            </>
-          } />
-          {/* About pages */}
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/about/vision-mission" element={<VisionMission />} />
-          <Route path="/about/scope" element={<OurScope />} />
-          <Route path="/about/innovation-research" element={<InnovationResearch />} />
-          <Route path="/about/training-consultation" element={<TrainingConsultation />} />
-          <Route path="/about/process-features" element={<ProcessFeatures />} />
-          <Route path="/about/business-policy" element={<BusinessPolicy />} />
-          <Route path="/about/rules-clients-partners" element={<RulesClientsPartners />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetails />} />
-          {/* Business Verticals pages */}
-          <Route path="/business-verticals/product" element={<BusinessProduct />} />
-          <Route path="/business-verticals/services" element={<BusinessServices />} />
-          <Route path="/business-verticals/research" element={<BusinessResearch />} />
-          {/* Solutions pages */}
-          <Route path="/solutions/building-health-monitoring" element={<BuildingHealthMonitoring />} />
-          <Route path="/solutions/bridges" element={<Bridges />} />
-          <Route path="/solutions/track" element={<Track />} />
-          <Route path="/solutions/tunnel" element={<Tunnel />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/projects" element={
-            <>
-              <Projects />
-              {/* Add shared layout/components here if needed */}
-            </>
-          } />
-          <Route path="/blogs" element={
-            <>
-              <Blogs />
-            </>
-          } />
-        </Routes>
+        <ScrollToHash />
+        {/* Cursor glow removed for performance and to stop content flicker */}
+        <AppInner />
       </div>
     </Router>
   );

@@ -49,8 +49,13 @@ const About = () => {
     <section
       id="about"
       ref={aboutRef}
-      className={`scroll-mt-28 py-20 bg-gray-50 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`relative scroll-mt-28 py-20 bg-gradient-to-b from-white via-slate-50 to-white transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
     >
+      {/* Decorative ambient accents */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-16 -right-10 h-64 w-64 rounded-full bg-gradient-to-br from-sky-200/40 via-cyan-200/30 to-transparent blur-3xl" />
+        <div className="absolute -bottom-16 -left-10 h-64 w-64 rounded-full bg-gradient-to-tr from-blue-200/30 via-sky-200/20 to-transparent blur-3xl" />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="section-title relative inline-block text-3xl md:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-sppl-blue via-sky-600 to-sppl-dark-blue">

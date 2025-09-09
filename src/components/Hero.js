@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 const Hero = ({ isLoading }) => {
   const heroRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       ([entry]) => {
@@ -59,21 +60,27 @@ const Hero = ({ isLoading }) => {
     <section
       id="home"
       ref={heroRef}
-      className={`relative h-screen flex items-center justify-center overflow-hidden transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className="relative h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full">
+    <div className="absolute inset-0 w-full h-full">
         <video
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          className="w-full h-full object-cover brightness-90 contrast-110"
-          poster="/images/hero-fallback.jpg"
-          onError={(e) => console.error('Video error:', e)}
-          onLoadStart={() => console.log('Video loading started')}
-          onCanPlay={() => console.log('Video can play')}
+          className="w-full h-full object-cover"
+      poster="/myimg/bridge.jpg"
+      onError={(e) => { console.error('Video error:', e); /* leave poster visible */ setVideoReady(true); }}
+      onLoadStart={() => { console.log('Video loading started'); setVideoReady(false); }}
+      onLoadedData={() => { setVideoReady(true); }}
+      onCanPlay={() => { console.log('Video can play'); setVideoReady(true); }}
+      onPlaying={() => { setVideoReady(true); }}
+          onEnded={(e) => { try { e.target.currentTime = 0; e.target.play(); } catch (_) {} }}
+          onStalled={(e) => { try { e.target.load(); e.target.play(); } catch (_) {} }}
+      onWaiting={(e) => { try { e.target.play(); } catch (_) {} /* don't flip ready off to avoid visible flash */ }}
+          onPause={(e) => { try { if (e.target.readyState >= 2) e.target.play(); } catch (_) {} }}
         >
           {/* Add your video file to the public/videos folder */}
           <source src="/videos/construction.mp4" type="video/mp4" />
@@ -81,8 +88,7 @@ const Hero = ({ isLoading }) => {
           {/* Fallback for browsers that don't support video */}
         </video>
         
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 video-overlay-strong"></div>
+  {/* Overlay removed; readability handled by local text backdrop below */}
       </div>
 
       {/* Hero Content - cycling text */}
@@ -100,14 +106,16 @@ const Hero = ({ isLoading }) => {
                 visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-2 scale-95'
               }`}
             >
-              <div className="mb-4">
-                <span className="inline-block text-5xl md:text-7xl font-semibold tracking-tight bg-gradient-to-r from-blue-100 via-white to-blue-200 text-transparent bg-clip-text drop-shadow-[0_1px_6px_rgba(0,0,0,0.25)] font-hero-heading">
-                  {messages[index].heading}
-                </span>
+              <div className="inline-block rounded-xl bg-black/24 px-4 py-3 md:px-6 md:py-4 backdrop-blur-[1.5px]">
+                <div className="mb-2 md:mb-3">
+                  <span className="inline-block text-5xl md:text-7xl font-semibold tracking-tight bg-gradient-to-r from-blue-100 via-white to-blue-200 text-transparent bg-clip-text drop-shadow-[0_1px_6px_rgba(0,0,0,0.25)] font-hero-heading">
+                    {messages[index].heading}
+                  </span>
+                </div>
+                <p className="text-2xl md:text-4xl text-white/95 font-medium max-w-5xl leading-relaxed mx-auto drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)] font-hero-sub">
+                  {messages[index].sub}
+                </p>
               </div>
-              <p className="text-2xl md:text-4xl text-white/95 font-medium max-w-5xl leading-relaxed mx-auto drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)] font-hero-sub">
-                {messages[index].sub}
-              </p>
             </div>
           </div>
         )}

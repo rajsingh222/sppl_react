@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: auto; }
   body {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+  :root {
+    --topbar-offset: 0px; /* updated dynamically on home when TopInfoBar shows */
+    --navbar-height: 80px; /* matches h-20 in Navbar */
   }
 }
 
@@ -83,19 +87,7 @@
 }
 
 /* Cursor glow */
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 9999px;
-  pointer-events: none;
-  z-index: 50;
-  background: radial-gradient(circle at center, rgba(59,130,246,0.35), rgba(30,64,175,0.15) 60%, rgba(30,64,175,0) 70%);
-  filter: blur(2px);
-  transition: transform 60ms linear;
-}
+/* cursor-glow removed */
 
 @keyframes v-scroll {
   0% { transform: translateY(0); }
@@ -114,10 +106,22 @@
 
 .navbar {
   position: fixed;
-  top: 40px; /* Same as .top-info-bar height */
+  top: 40px; /* Same as .top-info-bar height (unused if using Tailwind classes) */
   left: 0;
   width: 100%;
   height: 64px; /* Adjust as needed */
   z-index: 100;
   background: #fff;
+}
+
+/* Stable overlay for hero video to avoid flicker on scroll */
+.video-overlay-strong {
+  background: linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20));
+  pointer-events: none;
+}
+
+.video-stabilize {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }

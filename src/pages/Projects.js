@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const ProjectCard = ({ image, name, description, category, status }) => (
@@ -71,8 +70,7 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100">
-      <Navbar />
-      <div className="pt-20">
+  <div>
         {/* Hero Section */}
         <div className="text-center py-20 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white">
           <div className="max-w-4xl mx-auto px-6">

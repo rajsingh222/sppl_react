@@ -223,7 +223,7 @@ const Footer = () => {
 
       {/* Back to Top Button */}
       <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+  onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
         className="fixed bottom-6 right-6 w-12 h-12 bg-sppl-blue hover:bg-sppl-dark-blue text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 z-50"
       >
         <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">

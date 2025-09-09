@@ -1,5 +1,5 @@
 import React from 'react';
-import Reveal from './Reveal';
+// Reveal removed (now a no-op)
 
 const features = [
   {
@@ -35,7 +35,6 @@ export default function WhyChooseUs() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
-        <Reveal>
           <div className="text-center mb-14">
             <span className="inline-block text-xs tracking-wider uppercase text-sppl-dark-blue/70 bg-white/60 backdrop-blur px-3 py-1 rounded-full border border-sppl-dark-blue/10">Trusted Engineering</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight">
@@ -46,12 +45,10 @@ export default function WhyChooseUs() {
               <div className="h-1 w-28 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue shadow-sm" />
             </div>
           </div>
-        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((f, i) => (
-            <Reveal key={i} delay={i * 80}>
-              <div className="group relative h-full">
+      {features.map((f, i) => (
+        <div key={i} className="group relative h-full">
                 {/* glowing border */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sppl-light-blue/20 via-white to-sky-200/20 opacity-0 group-hover:opacity-100 blur transition-opacity" />
 
@@ -71,13 +68,11 @@ export default function WhyChooseUs() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </Reveal>
+        </div>
           ))}
         </div>
 
-        <Reveal delay={300}>
-          <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 mt-14">
+      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 mt-14">
             <p className="text-sm text-gray-600">Designed for clarity, built for scale, delivered with care.</p>
             <div className="flex items-center gap-3">
               <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-sppl-blue/20 bg-white/80 px-4 py-2 text-sppl-blue hover:bg-white transition">
@@ -88,8 +83,7 @@ export default function WhyChooseUs() {
                 Explore products
               </a>
             </div>
-          </div>
-        </Reveal>
+      </div>
       </div>
     </section>
   );

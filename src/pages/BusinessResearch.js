@@ -1,22 +1,18 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Reveal from '../components/Reveal';
+// Reveal removed
 
 export default function BusinessResearch() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100">
-      <Navbar />
-      <div className="pt-20">
+  <div>
         {/* Hero */}
         <section className="relative overflow-hidden">
           <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-sky-200/40 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-blue-200/40 blur-3xl" />
           <div className="text-center py-16 md:py-20 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white">
             <div className="max-w-4xl mx-auto px-6">
-              <Reveal>
-                <h1 className="text-4xl md:text-5xl font-bold mb-2">Research and Development</h1>
-              </Reveal>
+              <h1 className="text-4xl md:text-5xl font-bold mb-2">Research and Development</h1>
               {/* Keep only the main heading for consistency */}
             </div>
           </div>
@@ -25,7 +21,6 @@ export default function BusinessResearch() {
         {/* Content */}
         <div className="max-w-5xl mx-auto px-4 md:px-6 py-12 space-y-12">
           {/* Overview */}
-          <Reveal>
             <section className="max-w-3xl mx-auto">
               <div className="bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm">
                 <h2 className="text-2xl md:text-3xl font-bold text-sppl-blue">Driving Innovation in Infrastructure Monitoring</h2>
@@ -34,16 +29,13 @@ export default function BusinessResearch() {
                 </p>
               </div>
             </section>
-          </Reveal>
 
           {/* Our Core Focus Areas */}
           <section>
-            <Reveal>
               <div className="text-center mb-6">
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Our Core Focus Areas</h3>
                 <div className="mt-3 mx-auto h-1 w-28 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
               </div>
-            </Reveal>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
               {[
                 { icon: '🏗️', title: 'Civil Engineering Innovation', text: 'Developing modern approaches to infrastructure design and sustainability.' },
@@ -51,30 +43,26 @@ export default function BusinessResearch() {
                 { icon: '📡', title: 'Monitoring Technologies', text: 'Pioneering SHM solutions with energy-harvesting capabilities.' },
                 { icon: '🏢', title: 'Smart Building Design', text: 'Leveraging data-driven insights for intelligent, future-ready structures.' }
               ].map((f, i) => (
-                <Reveal key={f.title} delay={i * 80}>
-                  <div className="group h-full bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all transform ring-1 ring-blue-100/60">
-                    <div className="mb-3">
-                      <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md">
-                        <span className="text-2xl">{f.icon}</span>
-                      </span>
-                    </div>
-                    <h4 className="text-lg font-semibold text-gray-900">{f.title}</h4>
-                    <p className="mt-2 text-gray-600 leading-relaxed">{f.text}</p>
-                    <div className="mt-4 h-1 w-0 group-hover:w-16 transition-all bg-gradient-to-r from-sppl-blue to-sppl-dark-blue rounded-full" />
+                <div key={f.title} className="group h-full bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all transform ring-1 ring-blue-100/60">
+                  <div className="mb-3">
+                    <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md">
+                      <span className="text-2xl">{f.icon}</span>
+                    </span>
                   </div>
-                </Reveal>
+                  <h4 className="text-lg font-semibold text-gray-900">{f.title}</h4>
+                  <p className="mt-2 text-gray-600 leading-relaxed">{f.text}</p>
+                  <div className="mt-4 h-1 w-0 group-hover:w-16 transition-all bg-gradient-to-r from-sppl-blue to-sppl-dark-blue rounded-full" />
+                </div>
               ))}
             </div>
           </section>
 
           {/* Key R&D Services */}
           <section>
-            <Reveal>
               <div className="text-center mb-6">
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Key R&D Services</h3>
                 <div className="mt-3 mx-auto h-1 w-28 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
               </div>
-            </Reveal>
             <div className="max-w-3xl mx-auto space-y-6">
               {[
                 {
@@ -110,9 +98,8 @@ export default function BusinessResearch() {
                     'Custom Training Programs: tailored for infra projects.'
                   ]
                 }
-              ].map((s, i) => (
-                <Reveal key={s.title} delay={i * 70}>
-                  <div className="group relative bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-5 md:p-6 shadow-sm hover:shadow-md transition-all">
+        ].map((s, i) => (
+          <div key={s.title} className="group relative bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-5 md:p-6 shadow-sm hover:shadow-md transition-all">
                     <span className="absolute left-0 top-5 bottom-5 w-1 rounded-full bg-gradient-to-b from-sppl-blue to-sppl-dark-blue" />
                     <div className="flex items-start gap-4 pl-4">
                       <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md shrink-0">
@@ -130,20 +117,17 @@ export default function BusinessResearch() {
                         </ul>
                       </div>
                     </div>
-                  </div>
-                </Reveal>
+          </div>
               ))}
             </div>
           </section>
 
           {/* Why SPPL's R&D Matters */}
           <section>
-            <Reveal>
               <div className="text-center mb-6">
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Why SPPL’s R&D Matters</h3>
                 <div className="mt-3 mx-auto h-1 w-28 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
               </div>
-            </Reveal>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
               {[
                 { icon: '🚀', text: 'Translates research into practical, deployable solutions.' },
@@ -151,16 +135,14 @@ export default function BusinessResearch() {
                 { icon: '🏗️', text: 'Helps clients adopt future-ready infrastructure practices.' },
                 { icon: '👥', text: 'Creates a skilled ecosystem of engineers, researchers and industry experts.' }
               ].map((t, i) => (
-                <Reveal key={i} delay={i * 60}>
-                  <div className="h-full bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all">
+          <div key={i} className="h-full bg-white/90 backdrop-blur rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all">
                     <div className="mb-3">
                       <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-sppl-blue to-sppl-dark-blue text-white shadow-md">
                         <span className="text-lg">{t.icon}</span>
                       </span>
                     </div>
                     <p className="text-gray-800 leading-relaxed">{t.text}</p>
-                  </div>
-                </Reveal>
+          </div>
               ))}
             </div>
           </section>
