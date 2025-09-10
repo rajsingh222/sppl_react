@@ -3,11 +3,11 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 const bgImages = [
-  '/solution/b12.png',
-  '/solution/b11.jpg',
+  '/solution/bridgesen.png',
+  '/solution/ab2.png',
   
-  '/solution/b13.jpg',
-  '/solution/bridge-1.jpg'
+  '/solution/ab4.png',
+  '/solution/ab6.png'
 ]; // TODO: replace with bridge specific images e.g. /solution/bridge-1.jpg
 
 export default function Bridges() {

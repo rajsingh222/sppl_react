@@ -60,27 +60,23 @@ const Hero = ({ isLoading }) => {
     <section
       id="home"
       ref={heroRef}
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-[100svh] min-h-[100svh] md:h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Video Background */}
-    <div className="absolute inset-0 w-full h-full">
+    <div className="absolute inset-0 w-full h-full z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
-      poster="/myimg/bridge.jpg"
-      onError={(e) => { console.error('Video error:', e); /* leave poster visible */ setVideoReady(true); }}
-      onLoadStart={() => { console.log('Video loading started'); setVideoReady(false); }}
-      onLoadedData={() => { setVideoReady(true); }}
-      onCanPlay={() => { console.log('Video can play'); setVideoReady(true); }}
-      onPlaying={() => { setVideoReady(true); }}
-          onEnded={(e) => { try { e.target.currentTime = 0; e.target.play(); } catch (_) {} }}
-          onStalled={(e) => { try { e.target.load(); e.target.play(); } catch (_) {} }}
-      onWaiting={(e) => { try { e.target.play(); } catch (_) {} /* don't flip ready off to avoid visible flash */ }}
-          onPause={(e) => { try { if (e.target.readyState >= 2) e.target.play(); } catch (_) {} }}
+          preload="metadata"
+          className="w-full h-full object-cover object-bottom md:object-center"
+          poster="/myimg/bridge.jpg"
+          onError={() => { setVideoReady(true); }}
+          onLoadStart={() => { setVideoReady(false); }}
+          onLoadedData={() => { setVideoReady(true); }}
+          onCanPlay={() => { setVideoReady(true); }}
+          onPlaying={() => { setVideoReady(true); }}
         >
           {/* Add your video file to the public/videos folder */}
           <source src="/videos/construction.mp4" type="video/mp4" />
@@ -91,8 +87,10 @@ const Hero = ({ isLoading }) => {
   {/* Overlay removed; readability handled by local text backdrop below */}
       </div>
 
+  {/* No gradient overlay; fold handled purely by layout overlap */}
+
       {/* Hero Content - cycling text */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         {isLoading ? (
           <div className="animate-pulse">
             <div className="w-24 h-24 bg-white/20 rounded-full mx-auto mb-8"></div>
@@ -120,11 +118,6 @@ const Hero = ({ isLoading }) => {
           </div>
         )}
       </div>
-
-      {/* Subtle floating ambience */}
-      <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-75"></div>
-      <div className="absolute top-40 right-20 w-3 h-3 bg-blue-300 rounded-full animate-pulse opacity-60"></div>
-      <div className="absolute bottom-40 left-20 w-2 h-2 bg-blue-500 rounded-full animate-bounce opacity-80"></div>
     </section>
   );
 };

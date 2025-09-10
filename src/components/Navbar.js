@@ -61,7 +61,7 @@ export default function Navbar() {
       { label: 'Our Scope', to: '/about/scope' },
       { label: 'Innovation & Research', to: '/about/innovation-research' },
       { label: 'Training & Consultation', to: '/about/training-consultation' },
-      { label: 'Process Features', to: '/about/process-features' },
+      // { label: 'Process Features', to: '/about/process-features' },
       { label: 'Business Policy', to: '/about/business-policy' },
       { label: 'Rules for Clients and Partners', to: '/about/rules-clients-partners' },
     ]},

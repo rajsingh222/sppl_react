@@ -1,20 +1,20 @@
 import React from 'react';
 
 const SERVICES = [
-  { icon: '🌉', label: 'Bridge Monitoring', pdf: 'bridge-monitoring.pdf' },
-  { icon: '🏢', label: 'Building Monitoring', pdf: 'building-monitoring.pdf' },
-  { icon: '🚇', label: 'Tunnel Monitoring', pdf: 'tunnel-monitoring.pdf' },
-  { icon: '🚆', label: 'Rail & Road', pdf: 'rail-road.pdf' },
-  { icon: '🛡️', label: 'Critical & Strategic Infrastructure', pdf: 'critical-strategic-infrastructure.pdf' },
-  { icon: '⚡', label: 'Electric Power & Communication', pdf: 'electric-power-communication.pdf' },
-  { icon: '🏗️', label: 'Prestressed Structures', pdf: 'prestressed-structures.pdf' },
-  { icon: '🌊', label: 'Offshore & Hydraulic Structures', pdf: 'offshore-hydraulic-structures.pdf' },
+  { icon: '🌉', label: 'Bridge Monitoring', pdf: 'bridge Monitoring.pdf' },
+  { icon: '🏢', label: 'Building Monitoring', pdf: 'building Monitoring.pdf' },
+  { icon: '🚇', label: 'Tunnel Monitoring', pdf: 'Tunnel Monitoring.pdf' },
+  { icon: '🚆', label: 'Rail & Road', pdf: 'Rail and Road Infrastructure Monitoring.pdf' },
+  { icon: '🛡️', label: 'Critical & Strategic Infrastructure', pdf: 'Critical and Strategic Infrastructure Monitoring.pdf' },
+  { icon: '⚡', label: 'Electric Power & Communication', pdf: 'Electric Power and Communication Monitoring.pdf' },
+  { icon: '🏗️', label: 'Prestressed Structures', pdf: 'Prestressed Structures Monitoring.pdf' },
+  { icon: '🌊', label: 'Offshore & Hydraulic Structures', pdf: 'Offshore & Hydraulic Structures Monitoring.pdf' },
   // Removed last item per request. Add more here if needed.
 ];
 
 export default function KeyServices() {
   return (
-    <section className="relative py-16 md:py-24 bg-gradient-to-b from-white via-slate-50 to-white" id="key-services">
+    <section className="relative py-16 md:py-24 bg-gradient-to-b from-white via-sky-50 to-white" id="key-services">
       {/* Decorative ambient accents */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-16 -right-10 h-64 w-64 rounded-full bg-gradient-to-br from-sky-200/40 via-cyan-200/30 to-transparent blur-3xl" />
@@ -32,10 +32,12 @@ export default function KeyServices() {
         </div>
 
   <div className="grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {SERVICES.map(({ icon, label, pdf }) => (
+          {SERVICES.map(({ icon, label, pdf }) => {
+            const pdfHref = encodeURI(`/key services/${pdf}`);
+            return (
             <a
               key={label}
-              href={`/pdfs/${pdf}`}
+              href={pdfHref}
               target="_blank"
               rel="noreferrer noopener"
               className="group relative flex flex-col rounded-2xl p-6 bg-white/95 backdrop-blur-[2px] shadow-[0_8px_24px_rgba(2,6,23,0.06)] ring-1 ring-slate-200 hover:shadow-[0_14px_38px_rgba(2,132,199,0.14)] hover:ring-sky-300 transition-all duration-300 overflow-hidden hover:-translate-y-1 hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/60"
@@ -64,7 +66,7 @@ export default function KeyServices() {
                 </div>
               </div>
             </a>
-          ))}
+          );})}
         </div>
       </div>
     </section>

@@ -3,10 +3,12 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 const bgImages = [
-  '/solution/building-5.jpg',
-  '/solution/building-1.jpg',
-  '/solution/2155864.jpg',
-  '/solution/building-3.jpg'
+   '/solution/building-3.jpg',
+  
+  '/solution/ab7.png',
+  '/solution/ab5.png',
+'/solution/2155864.jpg',
+
 ];
 
 export default function BuildingHealthMonitoring() {

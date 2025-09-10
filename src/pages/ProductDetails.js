@@ -64,8 +64,8 @@ const ProductImage = ({ product }) => {
 // Full product data for all products (synced with Products.js)
 const productData = [
   // Decentralized
-  { id: 'xInc', name: 'xInc', category: 'Decentralized',
-    overview: 'Introducing xInc – Precision Inclinometer for SHM xInc is a fully digital inclinometer built for harsh industrial environments, combining robustness with advanced data acquisition. Designed for versatility, it can operate as a standalone or wireless device, making it ideal for both urban infrastructure and complex facilities. Whether measuring depression, elevation or tilt, xInc delivers high-precision real-time data for reliable structural health monitoring.',
+  { id: 'xInc', name: 'Digital Inclinometer Unit', category: 'Decentralized',
+    overview: 'Precision Inclinometer for SHM , It is a fully digital inclinometer built for harsh industrial environments, combining robustness with advanced data acquisition. Designed for versatility, it can operate as a standalone or wireless device, making it ideal for both urban infrastructure and complex facilities. Whether measuring depression, elevation or tilt, it delivers high-precision real-time data for reliable structural health monitoring.',
      features: [
        'Advanced connectivity with Wi‑Fi, Ethernet and GSM.',
        'Internal SD card storage with customizable sensor compatibility.',
@@ -73,7 +73,7 @@ const productData = [
        'Rugged IP67‑rated Aluminium enclosure for harsh environments.',
        'User‑friendly interface with display and web‑based monitoring.'
   ], imgSrc: '/products/items/12.jpg' },
-  { id: 'xAlarm', name: 'xAlarm', category: 'Decentralized', 
+  { id: 'xAlarm', name: 'Digital Alarming Unit', category: 'Decentralized', 
      overview: 'It activates external devices during triggered events and instantly delivers SMS alerts with critical values. With flexible integration into BMS, alarms, elevators and power systems, it offers reliable long-term performance and effortless installation.',
       features: [
         'Rugged IP67 Aluminium enclosure for reliable outdoor use.',
@@ -83,7 +83,7 @@ const productData = [
 'Ultra-low power consumption with PoE capability.',
 'Wide operating temperature range (-40°C to 85°C).'
       ], imgSrc: '/products/items/dist1-Photoroom.jpg' },
-  { id: 'xGeo', name: 'xGeo', category: 'Decentralized',  overview: 'Monitor structural health with precision using our fully digital geophone. Built for affordability and flexibility, it enables reliable field and remote data acquisition even in the harshest environments. Its compact, rugged design, certified for industrial use from -40°C to 55°C, ensures long-lasting performance. Operate it as a standalone unit or seamlessly integrate it into a daisy-chain system with simple network installation. The high-sensitivity tri-axial geophone delivers accurate, real-time data, making it the ideal choice for long-term monitoring and analysis.',
+  { id: 'xGeo', name: 'Digital Geophone Unit', category: 'Decentralized',  overview: 'Monitor structural health with precision using our fully digital geophone. Built for affordability and flexibility, it enables reliable field and remote data acquisition even in the harshest environments. Its compact, rugged design, certified for industrial use from -40°C to 55°C, ensures long-lasting performance. Operate it as a standalone unit or seamlessly integrate it into a daisy-chain system with simple network installation. The high-sensitivity tri-axial geophone delivers accurate, real-time data, making it the ideal choice for long-term monitoring and analysis.',
 
     features: [
       'Standalone or daisy-chain operation for flexible deployment.',
@@ -94,7 +94,7 @@ const productData = [
 'Ultra-low power consumption with PoE support and wide operating temperature range (-40°C to 85°C).'
 
     ], imgSrc: '/products/items/dist2-Photoroom.jpg' },
-  { id: 'xPlorer', name: 'xPlorer', category: 'Decentralized', overview: 'Get real-time data management in harsh environments with our affordable, flexible solution. Perfect for field and remote data acquisition, structural analysis and small spaces. Compact, lightweight and certified for international safety and environments. Run reliably for days, months or even years without stopping.',
+  { id: 'xPlorer', name: 'Central Recording and Processing Unit', category: 'Decentralized', overview: 'Get real-time data management in harsh environments with our affordable, flexible solution. Perfect for field and remote data acquisition, structural analysis and small spaces. Compact, lightweight and certified for international safety and environments. Run reliably for days, months or even years without stopping.',
      features: [
       'Industrial-grade rugged enclosure for harsh environments.',
 'Real-time data acquisition, management and analysis.',
@@ -105,7 +105,7 @@ const productData = [
 'Wide operating temperature range.'
 
      ], imgSrc: '/products/items/dist3-Photoroom.jpg' },
-  { id: 'xStrain', name: 'xStrain', category: 'Decentralized', overview: 'xStrain – Flexible, Reliable Strain Monitoring xStrain is an affordable and adaptable solution for monitoring Wheatstone Bridge sensors in harsh environments. Ideal for field and remote data acquisition of low-voltage output sensors, it features a compact, rugged design certified for industrial use from -40°C to 55°C. Operate it as a standalone unit or integrate it into a network for easy installation. With a variety of sensor options, xStrain delivers precise monitoring and long-term reliable performance.',
+  { id: 'xStrain', name: 'Bridge Sensor Digitizer', category: 'Decentralized', overview: ' Flexible, Reliable Strain Monitoring It is an affordable and adaptable solution for monitoring Wheatstone Bridge sensors in harsh environments. Ideal for field and remote data acquisition of low-voltage output sensors, it features a compact, rugged design certified for industrial use from -40°C to 55°C. Operate it as a standalone unit or integrate it into a network for easy installation. With a variety of sensor options, it delivers precise monitoring and long-term reliable performance.',
 
      features: [
       'Distributed monitoring system for Wheatstone Bridge sensors.',
@@ -117,7 +117,7 @@ const productData = [
 'Wide operating temperature range.'
 
      ], imgSrc: '/products/items/dist4-Photoroom.jpg' },
-  { id: 'xWave', name: 'xWave', category: 'Decentralized',  overview: 'Reliable, Flexible SHM Monitoring Our fully digital solution provides affordable and versatile structural health monitoring for buildings. Ideal for field and remote data acquisition and analysis, it features a compact, rugged design certified for harsh industrial environments from -40°C to 55°C. Operate it as a standalone unit or integrate it into a network for easy installation. With a variety of sensor options, it delivers precise monitoring and long-term reliable performance for days, months or even years of continuous operation.',
+  { id: 'xWave', name: 'Digital Accelerometer Unit', category: 'Decentralized',  overview: 'Reliable, Flexible SHM Monitoring Our fully digital solution provides affordable and versatile structural health monitoring for buildings. Ideal for field and remote data acquisition and analysis, it features a compact, rugged design certified for harsh industrial environments from -40°C to 55°C. Operate it as a standalone unit or integrate it into a network for easy installation. With a variety of sensor options, it delivers precise monitoring and long-term reliable performance for days, months or even years of continuous operation.',
      features: ['Operates standalone or in a daisy-chain SHM network.',
 'Rugged IP67 Aluminium enclosure for harsh environments.',
 'High-quality 32-bit AD conversion with embedded 3-channel accelerometer.',
@@ -126,14 +126,14 @@ const productData = [
 'GPS/RTC time synchronization and self-test function.',
 'Easy installation, low power consumption, wide operating temperature range.'
 ], imgSrc: '/products/items/dist5-Photoroom.jpg' },
-  { id: 'xSense', name: 'xSense', category: 'Decentralized', overview: 'xSense – Flexible, Reliable SHM Monitoring Unlock the full potential of structural health monitoring with xSense, a fully digital solution for acquiring data from any voltage-output sensor. Affordable and adaptable, it is designed for harsh environments and confined spaces. Its compact, rugged design is certified for industrial use from -40°C to 55°C. Easy network installation allows integration of a variety of sensors for precise monitoring, ensuring long-term reliable performance.',
+  { id: 'xSense', name: 'Voltage Sensor Digitizer', category: 'Decentralized', overview: 'Flexible, Reliable SHM Monitoring Unlock the full potential of structural health monitoring with it, a fully digital solution for acquiring data from any voltage-output sensor. Affordable and adaptable, it is designed for harsh environments and confined spaces. Its compact, rugged design is certified for industrial use from -40°C to 55°C. Easy network installation allows integration of a variety of sensors for precise monitoring, ensuring long-term reliable performance.',
      features: ['Distributed digitizer for monitoring voltage, current, and RTD sensors (displacement, temperature, humidity, wind, inclination, corrosion, etc.).',
 'Rugged IP67 Aluminium enclosure for reliable operation in harsh environments.',
 'High-quality 16-bit AD conversion with 8/16 channels for versatile sensor connectivity.',
 'Configurable sampling rate with Ethernet, Wi-Fi, GSM connectivity, Micro SD storage and GPS/RTC synchronization.',
 'Easy installation with self-test function, PoE capability (9-72VDC) and long-term reliable performance.'
 ], imgSrc: '/products/items/dist6-Photoroom.jpg' },
-  { id: 'xMet', name: 'xMet', category: 'Decentralized',  overview: 'xMet – Advanced Weather Station Gateway Take your environmental monitoring to the next level with xMet, an advanced gateway for weather stations. Seamlessly integrate almost any Modbus-compatible weather station into your SHM system for real-time data acquisition of wind, temperature, humidity, pressure, solar radiation, precipitation and more. Its compact, rugged design ensures reliable performance in harsh environments for continuous operation over days, months or even years.',
+  { id: 'xMet', name: 'Weather Station', category: 'Decentralized',  overview: 'xMet – Advanced Weather Station Gateway Take your environmental monitoring to the next level with xMet, an advanced gateway for weather stations. Seamlessly integrate almost any Modbus-compatible weather station into your SHM system for real-time data acquisition of wind, temperature, humidity, pressure, solar radiation, precipitation and more. Its compact, rugged design ensures reliable performance in harsh environments for continuous operation over days, months or even years.',
      features: ['Rugged, durable design with IP67 protection for harsh environments.',
 'RS-485 bus with Modbus protocol for easy integration and user-configurable channels.',
 'Monitor multiple units with a single account for centralized management.',
@@ -141,7 +141,7 @@ const productData = [
 'Wide operating temperature range (-40°C to 85°C) for extreme conditions.'
 ], imgSrc: '/items/dist7-Photoroom (1).jpg' },
   // Centralized
-  { id: 'xRover', name: 'xRover', category: 'Centralized', overview: 'Experience precision and reliability with xRover. This custom-configured high-performance system delivers multi-channel, real-time data acquisition and structural analysis. It supports user-defined sampling rates and integrates seamlessly with all sensor types. Built in a durable, compact design, it ensures reliable performance even in harsh environments. With secure cloud-based tools, you can access real-time data and generate automated PDF reports from any internet-enabled device.',
+  { id: 'xRover', name: 'Multi-channel Real-Time Data', category: 'Centralized', overview: 'Experience precision and reliability with it. This custom-configured high-performance system delivers multi-channel, real-time data acquisition and structural analysis. It supports user-defined sampling rates and integrates seamlessly with all sensor types. Built in a durable, compact design, it ensures reliable performance even in harsh environments. With secure cloud-based tools, you can access real-time data and generate automated PDF reports from any internet-enabled device.',
      features: ['IP67-rated aluminium enclosure built for harsh environments.',
 'Real-time data capture with centralized recording.',
 'Quality AD conversion with customizable resolutions and sampling rates.',
@@ -167,13 +167,13 @@ const productData = [
       ],
       imgSrc: '/products/download/image.png' },
   // Portable
-  { id: 'xWave-Ambient', name: 'xWave-Ambient', category: 'Portable', overview: 'Introducing a next-generation wireless solution for Structural Health Monitoring. With a self-healing algorithm, the system ensures seamless data transmission, even if some sensors temporarily lose connection. Devices communicate directly with each other, enhancing reliability and reducing dependency on gateways. Supporting standard Wi-Fi protocols (802.11n/g/b), it enables easy coverage extension and hassle-free sensor connectivity—no advanced network expertise required. Designed with portability in mind, its 12+ hour battery life makes it ideal for field measurements. Upgrade your SHM system with a smarter, more reliable wireless network.',
+  { id: 'xWave-Ambient', name: 'Portable Digital Accelerometer Unit', category: 'Portable', overview: 'Introducing a next-generation wireless solution for Structural Health Monitoring. With a self-healing algorithm, the system ensures seamless data transmission, even if some sensors temporarily lose connection. Devices communicate directly with each other, enhancing reliability and reducing dependency on gateways. Supporting standard Wi-Fi protocols (802.11n/g/b), it enables easy coverage extension and hassle-free sensor connectivity—no advanced network expertise required. Designed with portability in mind, its 12+ hour battery life makes it ideal for field measurements. Upgrade your SHM system with a smarter, more reliable wireless network.',
      features: ['Fully digital standalone unit engineered for harsh environments and confined spaces.',
 'Precise control and advanced data acquisition in a compact rugged design.',
 'Operating temperature range from -40°C to +55°C for reliable performance.',
 'Compliant with international safety and EMC standards for versatile SHM applications.'
 ], imgSrc: '/products/items/port11-photoroom.jpg' },
-  { id: 'xPlorer-Ambient', name: 'xPlorer-Ambient', category: 'Portable', overview: 'The xPlorer Ambient is a complete solution for reliable data acquisition and analysis in demanding field environments. With its portable design and long battery life, it’s built for extended measurements anytime, anywhere. Advanced features such as real-time monitoring, automated alerts and remote access keep you in control with ease. From structural health monitoring to environmental data collection, xPlorer Ambient is the ideal choice for versatile field applications.',
+  { id: 'xPlorer-Ambient', name: 'Central Portable Acquisition Unit', category: 'Portable', overview: 'This is a complete solution for reliable data acquisition and analysis in demanding field environments. With its portable design and long battery life, it’s built for extended measurements anytime, anywhere. Advanced features such as real-time monitoring, automated alerts and remote access keep you in control with ease. From structural health monitoring to environmental data collection, It is the ideal choice for versatile field applications.',
     features: ['Rugged enclosure designed for harsh environments.',
 'Web-based reporting, archiving and real-time streaming with event triggering.',
 'Supports Ethernet, Wi-Fi and GSM communication.',

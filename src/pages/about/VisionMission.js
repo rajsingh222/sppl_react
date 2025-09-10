@@ -13,7 +13,7 @@ export default function VisionMission() {
           </div>
           <div className="max-w-4xl mx-auto px-6">
             <h1 className="text-4xl md:text-5xl font-bold mb-3">Vision & Mission</h1>
-            <p className="text-lg md:text-xl text-blue-100">Safeguarding India’s infrastructure through innovation, research, and technology.</p>
+            <p className="text-lg md:text-xl text-blue-100">Safeguarding India’s infrastructure through innovation, research and technology.</p>
             <span className="block mt-6 h-1 w-24 mx-auto rounded-full bg-gradient-to-r from-white/60 to-blue-200/60"></span>
           </div>
         </div>
@@ -23,7 +23,7 @@ export default function VisionMission() {
               <h2 className="text-2xl md:text-3xl font-bold text-sppl-blue">At Sanrachna Prahari Pvt. Ltd.</h2>
               <div className="mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
               <p className="mt-4 text-gray-800 leading-relaxed">
-                At Sanrachna Prahari Pvt. Ltd., we believe in safeguarding India’s civil infrastructure through innovation, research, and technology. Our vision, mission, and aim reflect our unwavering commitment to safety, sustainability, and excellence in Structural Health Monitoring (SHM).
+                At Sanrachna Prahari Pvt Ltd., we believe in safeguarding India’s civil infrastructure through innovation, research and technology. Our vision, mission and aim reflect our unwavering commitment to safety, sustainability and excellence in Structural Health Monitoring (SHM).
               </p>
             </div>
 
@@ -34,7 +34,7 @@ export default function VisionMission() {
                   <h3 className="text-xl md:text-2xl font-bold text-gray-900">Vision Statement</h3>
                 </div>
                 <blockquote className="text-gray-800 leading-relaxed italic">
-                  “Ensuring safety, longevity, and sustainability of infrastructure through cutting-edge technology, innovative research, and world-class services in Structural Health Monitoring.”
+                  “Ensuring safety, longevity and sustainability of infrastructure through cutting-edge technology, innovative research and world-class services in Structural Health Monitoring.”
                 </blockquote>
               </div>
               <div className="h-full bg-white/90 backdrop-blur rounded-2xl border border-gray-200 shadow-sm p-6 md:p-8">
@@ -54,7 +54,7 @@ export default function VisionMission() {
                 <h3 className="text-xl md:text-2xl font-bold text-gray-900">Our Aim</h3>
               </div>
               <p className="text-gray-800 leading-relaxed">
-                “To revolutionize the way infrastructure is monitored, maintained, and managed, ensuring resilience and sustainability for generations to come.”
+                “To revolutionize the way infrastructure is monitored, maintained and managed, ensuring resilience and sustainability for generations to come.”
               </p>
             </div>
           </div>

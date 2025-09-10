@@ -3,9 +3,11 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 const bgImages = [
+  
+  '/solution/tr11.png',
   '/solution/tr1.png',
   '/solution/tr2.jpg',
-  '/solution/tr3.jpg',
+  
   '/solution/tr4.jpg'
 ]; // TODO: replace with track specific images
 

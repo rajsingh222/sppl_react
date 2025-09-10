@@ -1,89 +1,101 @@
-import React from 'react';
-// Reveal removed (now a no-op)
+import React, { useEffect, useState } from 'react';
 
-const features = [
+const items = [
   {
-    icon: '🛡️',
-    title: 'Proven Reliability',
-    text: 'Industrial‑grade systems designed to perform in real‑world conditions.'
+    title: 'Structural Health Monitoring',
+    text: 'Comprehensive Structural Health Monitoring solutions for bridges, buildings, and all civil infrastructure.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-sky-600">
+        <path d="M3 5h18v2H3V5Zm0 6h18v2H3v-2Zm0 6h18v2H3v-2Z"/>
+      </svg>
+    ),
   },
   {
-    icon: '⚙️',
-    title: 'Engineering First',
-    text: 'Built by domain experts with deep SHM and sensing experience.'
+    title: 'Data Aquisition',
+    text: 'Advanced diagnostics, real-time data monitoring, and actionable insights for preventive maintenance and safety.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-sky-600">
+        <path d="M12 3C7 3 3 4.79 3 7v10c0 2.21 4 4 9 4s9-1.79 9-4V7c0-2.21-4-4-9-4Zm0 2c4.42 0 7 .99 7 2s-2.58 2-7 2-7-.99-7-2 2.58-2 7-2Zm7 6c0 1.01-2.58 2-7 2s-7-.99-7-2V9.26C6.67 10.32 9.33 11 12 11s5.33-.68 7-1.74V11Zm0 4c0 1.01-2.58 2-7 2s-7-.99-7-2v-1.74C6.67 14.32 9.33 15 12 15s5.33-.68 7-1.74V15Z"/>
+      </svg>
+    ),
   },
   {
-    icon: '📊',
-    title: 'Actionable Insights',
-    text: 'From clean data to clear decisions—no noise, just signals.'
+    title: 'Assessment and Planning',
+    text: 'Identifying potential risks or structural vulnerabilities',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-sky-600">
+        <path d="M3 5h14v14H3V5Zm16 0h2v14h-2V5Zm-4 2H5v10h10V7Z"/>
+      </svg>
+    ),
   },
   {
-    icon: '🤝',
-    title: 'Partner Mindset',
-    text: 'Responsive support and long‑term collaboration on your goals.'
-  }
+    title: 'System Design & Installation',
+    text: 'Selection of appropriate sensors and aquisition systems for the monitoring system',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-sky-600">
+        <path d="M10 6V4h4v2h-4Zm7 0h2v4h-2V6ZM5 6h2v4H5V6Zm2 8H5v4h2v-4Zm10 0h2v4h-2v-4Zm-7 0v2h4v-2h-4Z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Real-time monitoring',
+    text: 'Indigenous sensors (Make in India) manufactured through patented technology of IIT Delhi.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-sky-600">
+        <path d="M12 3a9 9 0 0 1 9 9h-2a7 7 0 0 0-7-7V3Zm0 4a5 5 0 0 1 5 5h-2a3 3 0 0 0-3-3V7Zm0 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-9 1a9 9 0 0 1 9-9v2a7 7 0 0 0-7 7H3Zm0 0a9 9 0 0 0 9 9v-2a7 7 0 0 1-7-7H3Z"/>
+      </svg>
+    ),
+  },
+  {
+    title: 'Experienced Professionals',
+    text: 'A dedicated team of experts with deep technical expertise and a passion for infrastructure sustainability.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6 text-sky-600">
+        <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm-7 9a7 7 0 0 1 14 0H5Z"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function WhyChooseUs() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 30);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
-    <section id="why-choose-us" className="relative py-24 overflow-hidden">
-      {/* softly layered background */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-20 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-sppl-light-blue/20 to-sky-400/10 blur-3xl" />
-        <div className="absolute -bottom-24 -right-20 h-80 w-80 rounded-full bg-gradient-to-tr from-sky-300/20 to-sppl-dark-blue/10 blur-3xl" />
-        <div className="absolute inset-x-0 top-1/3 h-px bg-gradient-to-r from-transparent via-sppl-blue/20 to-transparent" />
-      </div>
-
+    <section id="why-choose-us" className="py-20 bg-gradient-to-b from-white via-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <span className="inline-block text-xs tracking-wider uppercase text-sppl-dark-blue/70 bg-white/60 backdrop-blur px-3 py-1 rounded-full border border-sppl-dark-blue/10">Trusted Engineering</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-sppl-blue via-sky-600 to-sppl-dark-blue">Why Choose Us</span>
-            </h2>
-            <p className="mt-4 text-gray-700 max-w-2xl mx-auto">Minimal by design. Powerful in performance. A focused stack that simply works.</p>
-            <div className="mt-6 flex justify-center">
-              <div className="h-1 w-28 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue shadow-sm" />
-            </div>
-          </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {features.map((f, i) => (
-        <div key={i} className="group relative h-full">
-                {/* glowing border */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-sppl-light-blue/20 via-white to-sky-200/20 opacity-0 group-hover:opacity-100 blur transition-opacity" />
-
-                <div className="relative h-full bg-white/70 backdrop-blur-xl border border-white/40 rounded-2xl shadow-sm ring-1 ring-sppl-light-blue/10 transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-xl">
-                  <div className="p-6 flex flex-col h-full">
-                    <div className="mb-4">
-                      <span className="relative inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-sky-100 text-2xl">
-                        {/* soft inner glow */}
-                        <span className="absolute inset-0 rounded-xl bg-white/60 blur opacity-60" />
-                        <span className="relative">{f.icon}</span>
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900">{f.title}</h3>
-                    <p className="mt-2 text-gray-600 leading-relaxed">{f.text}</p>
-                    <div className="mt-6">
-                      <div className="h-px w-1/2 bg-gradient-to-r from-sppl-blue/40 to-transparent" />
-                    </div>
-                  </div>
-                </div>
+        <div className="text-center mb-10">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">Why Choose Us</h2>
+          <p className="mt-3 text-slate-700 max-w-3xl mx-auto">
+            An IIT Delhi incubated company with leading expertise in technical operations and research
+          </p>
         </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {items.map((it, i) => (
+            <div
+              key={it.title}
+              className={`group relative rounded-2xl bg-white/90 backdrop-blur border border-slate-200 ring-1 ring-slate-200/60 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+              style={{
+                opacity: mounted ? 1 : 0,
+                transform: mounted ? 'translateY(0)' : 'translateY(6px)',
+                transitionDelay: `${i * 100}ms`,
+              }}
+            >
+              <div className="p-6">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-sky-50 to-cyan-100 ring-1 ring-sky-200/60">
+                  {it.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900">{it.title}</h3>
+                <p className="mt-2 text-slate-600 leading-relaxed text-sm">{it.text}</p>
+              </div>
+              <div className="absolute inset-x-6 bottom-3 h-px bg-gradient-to-r from-sky-300/60 via-blue-300/60 to-cyan-300/60" />
+            </div>
           ))}
         </div>
-
-      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 mt-14">
-            <p className="text-sm text-gray-600">Designed for clarity, built for scale, delivered with care.</p>
-            <div className="flex items-center gap-3">
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-sppl-blue/20 bg-white/80 px-4 py-2 text-sppl-blue hover:bg-white transition">
-                <span>Talk to us</span>
-                <span className="text-base">→</span>
-              </a>
-              <a href="/products" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white px-4 py-2 shadow-sm hover:shadow-md transition">
-                Explore products
-              </a>
-            </div>
-      </div>
       </div>
     </section>
   );

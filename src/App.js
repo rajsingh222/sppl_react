@@ -117,7 +117,7 @@ function App() {
         <Route path="/about/scope" element={<OurScope />} />
         <Route path="/about/innovation-research" element={<InnovationResearch />} />
         <Route path="/about/training-consultation" element={<TrainingConsultation />} />
-        <Route path="/about/process-features" element={<ProcessFeatures />} />
+        {/* <Route path="/about/process-features" element={<ProcessFeatures />} /> */}
         <Route path="/about/business-policy" element={<BusinessPolicy />} />
         <Route path="/about/rules-clients-partners" element={<RulesClientsPartners />} />
         <Route path="/products" element={<Products />} />

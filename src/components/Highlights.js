@@ -53,7 +53,7 @@ const Highlights = () => {
   ];
 
   return (
-    <section className="relative z-20 -mt-10 sm:-mt-14 md:-mt-16 mb-12 md:mb-16">
+  <section className="relative z-20 -mt-[14vh] md:-mt-[12vh] lg:-mt-[14vh]">
       <div className="max-w-5xl md:max-w-6xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Ticker title="Latest Announcement" items={announcements} icon={<IconBell className="h-5 w-5" />} />
