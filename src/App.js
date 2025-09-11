@@ -9,7 +9,6 @@ import ProductDetails from './pages/ProductDetails';
 import Dashboard from './pages/Dashboard';
 import Blogs from './pages/Blogs';
 import BusinessVerticals from './components/BusinessVerticals';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Highlights from './components/Highlights';
 import TopInfoBar from './components/TopInfoBar';
@@ -34,6 +33,11 @@ import Track from './pages/solutions/Track';
 import Tunnel from './pages/solutions/Tunnel';
 import Airport from './pages/solutions/Airport';
 import Industries from './pages/solutions/Industries';
+
+import ClientContactForm from './components/handlers/ClientForm';
+import PartnershipContactForm from './components/handlers/PartnershipForm';
+import OrganisationContactForm from './components/handlers/OrganisationForm';
+import CollaborationForm from './components/handlers/OrganisationForm';
 
 // Reveal removed for instant rendering
 // Removed PageTransition for instant route changes
@@ -135,7 +139,13 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/solutions/airport" element={<Airport />} />
-        <Route path="/solutions/industries" element={<Industries />} />
+  <Route path="/solutions/industries" element={<Industries />} />
+
+  <Route path="/contact/client" element={<ClientContactForm />} />
+  <Route path="/contact/partnership" element={<PartnershipContactForm />} />
+  <Route path="/contact/organisation" element={<CollaborationForm />} />
+        {/* Fallback route */}
+        
       </Routes>
     );
   };

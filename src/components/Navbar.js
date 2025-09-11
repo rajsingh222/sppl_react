@@ -17,6 +17,7 @@ export default function Navbar() {
     if (path === '/projects') return 'projects';
     if (path === '/blogs') return 'blogs';
     if (path === '/dashboard') return 'dashboard';
+  if (path.startsWith('/contact')) return 'contact';
     if (path.startsWith('/about')) return 'about';
     if (path.startsWith('/business-verticals')) return 'business verticals';
     if (path.startsWith('/solutions')) return 'solutions';
@@ -83,10 +84,10 @@ export default function Navbar() {
     { label: 'Blogs', to: '/blogs' },
     { label: 'Dashboard', to: '/dashboard' },
     { label: 'Gallery', to: '/#gallery' },
-    { label: 'Contact', to: '/#contact', dropdown: [
-      { label: 'Client', to: '/#contact-client' },
-      { label: 'Partnership', to: '/#contact-partnership' },
-      { label: 'Organisation', to: '/#contact-organisation' },
+    { label: 'Contact', to: '/contact', dropdown: [
+      { label: 'Client', to: '/contact/client' },
+      { label: 'Partnership', to: '/contact/partnership' },
+      { label: 'Organisation', to: '/contact/organisation' },
     ]},
   ];
 
@@ -142,6 +143,7 @@ export default function Navbar() {
                       (activeItem === 'about' && item.to === '/about') ||
                       (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
                       (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
+                      (activeItem === 'contact' && item.to.startsWith('/contact')) ||
                       (activeItem === 'products' && item.to === '/products') ||
                       (activeItem === 'projects' && item.to === '/projects')
                       || (activeItem === 'blogs' && item.to === '/blogs')
@@ -166,6 +168,10 @@ export default function Navbar() {
                       if (item.to.startsWith('/solutions')) {
                         setActiveItem('solutions');
                       }
+                      // Contact
+                      if (item.to.startsWith('/contact')) {
+                        setActiveItem('contact');
+                      }
                       // Business Verticals
                       if (item.to.startsWith('/business-verticals')) {
                         setActiveItem('business verticals');
@@ -180,6 +186,7 @@ export default function Navbar() {
                       (activeItem === 'about' && item.to === '/about') ||
                       (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
                       (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
+                      (activeItem === 'contact' && item.to.startsWith('/contact')) ||
                       (activeItem === 'products' && item.to === '/products') ||
                       (activeItem === 'projects' && item.to === '/projects')
                       || (activeItem === 'blogs' && item.to === '/blogs')
@@ -193,7 +200,8 @@ export default function Navbar() {
                       <span className={`absolute right-2 top-1/2 -translate-y-1/2 transition-colors ${
                         (activeItem === 'about' && item.to === '/about') ||
                         (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
-                        (activeItem === 'solutions' && item.to.startsWith('/solutions'))
+                        (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
+                        (activeItem === 'contact' && item.to.startsWith('/contact'))
                           ? 'text-white' : 'text-gray-500 group-hover:text-white'
                       }`}>
                         <CaretDown className="h-4 w-4" />
@@ -306,6 +314,7 @@ export default function Navbar() {
                       (activeItem === 'about' && item.to.startsWith('/about')) ||
                       (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
                       (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
+                      (activeItem === 'contact' && item.to.startsWith('/contact')) ||
                       (activeItem === 'products' && item.to === '/products') ||
                       (activeItem === 'projects' && item.to === '/projects') ||
                       (activeItem === 'blogs' && item.to === '/blogs') ||
@@ -323,6 +332,7 @@ export default function Navbar() {
                         return;
                       }
                       if (item.to.startsWith('/about')) setActiveItem('about');
+                      if (item.to.startsWith('/contact')) setActiveItem('contact');
                       if (item.to.startsWith('/business-verticals')) setActiveItem('business verticals');
                       if (item.to.startsWith('/solutions')) setActiveItem('solutions');
                       if (item.to === '/products') setActiveItem('products');
