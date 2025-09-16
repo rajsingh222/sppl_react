@@ -118,7 +118,7 @@ export default function BusinessProduct() {
           {/* Why Choose */}
           <section>
             <div className="text-center mb-6">
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900">Why Choose SPPL Sensors</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900">Why Choose SPPL Integrated Sensors</h3>
               <div className="mt-3 mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
             </div>
             <div className="grid sm:grid-cols-2 items-stretch gap-6">

@@ -2,36 +2,40 @@ import React from 'react';
 import Footer from '../components/Footer';
 
 const BlogCard = ({ image, author, date, title, excerpt, link, containerClass = '' }) => (
-  <div className={`group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 ${containerClass}`}>
+  <div className={`group bg-white/90 rounded-xl shadow-[0_2px_16px_-4px_rgba(36,54,80,0.10)] overflow-hidden transition-all duration-300 hover:shadow-[0_6px_32px_-6px_rgba(36,54,80,0.16)] hover:-translate-y-1.5 flex flex-col h-full ${containerClass}`} style={{ fontFamily: 'Poppins, Segoe UI, sans-serif' }}>
     <div className="relative overflow-hidden">
       <img
         src={image}
         alt={title}
-        className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
+        className="w-full aspect-[16/9] object-cover transition-transform duration-300 group-hover:scale-105"
+        style={{ borderRadius: '0.75rem 0.75rem 0 0', minHeight: '180px', maxHeight: '220px' }}
       />
     </div>
-    <div className="p-6">
-      <div className="text-xs sm:text-sm text-gray-500 flex items-center justify-between mb-2">
-        <span className="truncate">{author}</span>
-        <span>{date}</span>
+    <div className="p-5 md:p-6 flex flex-col flex-1">
+      <div className="text-xs sm:text-sm text-gray-400 flex items-center justify-between mb-2 tracking-wide">
+        <span className="truncate font-medium">{author}</span>
+        <span className="font-light">{date}</span>
       </div>
-      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-sppl-blue transition-colors">
+      <h3 className="text-lg md:text-xl font-semibold text-slate-900 mb-2 group-hover:text-sppl-blue transition-colors leading-tight">
         {title}
       </h3>
-      <p className="text-gray-600 leading-relaxed mb-5">
+      <p className="text-gray-600/90 leading-relaxed mb-4 text-[15px] flex-1 text-justify">
         {excerpt}
       </p>
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-sppl-blue font-medium hover:text-sppl-dark-blue transition-colors"
-      >
-        Read more
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
+      <div className="pt-2">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-sppl-blue/90 to-sppl-dark-blue/90 text-white text-sm font-medium shadow-sm hover:scale-105 hover:shadow-md transition-all"
+          style={{ boxShadow: '0 1px 8px -2px rgba(36,54,80,0.10)' }}
+        >
+          Read more
+          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 );
@@ -39,81 +43,79 @@ const BlogCard = ({ image, author, date, title, excerpt, link, containerClass = 
 const Blogs = () => {
   const posts = [
     {
-      image: '/blogs/postblog1.jfif',
-      author: 'Alex Johnson',
-      date: 'Sep 1, 2025',
-      title: 'Designing Reliable SHM at Scale',
-      excerpt: 'A minimal look at the principles that make structural health monitoring systems robust, scalable, and future-ready.',
-      link: 'https://www.linkedin.com/'
+      image: '/blog/1.jpg',
+      author: 'Col Rohit Gogna',
+      date: '14 June, 2025',
+      title: "Strengthening India's Infrastructure, One Innovation at a Time",
+      excerpt: 'We’re proud to share that Col Rohit Gogna, CEO Sanrachna Prahari Pvt Ltd (SPPL), recently delivered a central lecture at the College of Military Engineering (CME), Pune – attended by the Commandant, senior officers of Armed Forces, faculty, staff and all engineering students of this prestigious institution.',
+      link: 'https://www.linkedin.com/posts/sanrachna-prahari-pvt-ltd_shm-defenceinfrastructure-sppl-activity-7334134688313212928-0Jhn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF26Ya0BNUi3tH74zO0nOKO5UwQP1RpVzUQ'
     },
     {
-      image: '/blogs/postblog2.jfif',
-      author: 'Priya Mehta',
-      date: 'Aug 18, 2025',
-      title: 'Data to Decisions: The SHM Pipeline',
-      excerpt: 'From sensors to dashboards, how clean data, smart models, and thoughtful UX create meaningful outcomes.',
-      link: 'https://www.linkedin.com/'
+      image: '/blog/2.png',
+      author: 'Col Rohit Gogna',
+      date: '07 Aug, 2025',
+      title: 'Certificate Course on SHM',
+      excerpt: 'Sanrachna Prahari Pvt Ltd (SPPL) is pleased to announce a one day hands on certificate course on "Introduction to Structural Health Monitoring: Theory & Practice", in collaboration with IIT Delhi.',
+      link: 'https://www.linkedin.com/posts/sanrachna-prahari-pvt-ltd_introduction-to-shm-theory-practice-activity-7316762848578129921-t5Um?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD_WOk0Br5WpIX34lfJDhCpUJpJ9wQV_API'
     },
     {
-      image: '/blogs/postblog3.jfif',
-      author: 'Rahul Verma',
-      date: 'Aug 2, 2025',
-      title: 'Edge + Cloud: A Balanced Approach',
-      excerpt: 'Why hybrid architectures matter for latency, reliability, and sustainability in modern monitoring.',
-      link: 'https://www.linkedin.com/'
+      image: '/blog/3.jfif',
+      author: 'Col Rohit Gogna',
+      date: '23 Sep, 2024',
+      title: 'What is SHM?',
+      excerpt: 'Bridge collapse is not new to the world and the story is no different in India. Available data indicates to poor maintenance, design flaws, overloading, aging infrastructure and environmental changes, as prime factors responsible for such failures.',
+      link: 'https://www.linkedin.com/feed/update/urn:li:activity:7243920334179987457/'
     },
     {
-      image: '/blogs/postblog4.PNG',
-      author: 'Sana Khan',
-      date: 'Jul 22, 2025',
-      title: 'Modern Sensor Networks',
-      excerpt: 'Choosing the right protocols and power profiles for long-lived, high-fidelity sensing at scale.',
-      link: 'https://www.linkedin.com/'
+      image: '/blog/4.jfif',
+      author: 'Ms. Shipra Prakash',
+      date: '23 Oct, 2024',
+      title: 'Building Collapse!',
+      excerpt: 'Bengaluru, India’s rapidly growing metropolitan city, has witnessed multiple incidents of building collapses in recent years. These incidents raise significant concerns about construction standards, regulatory oversights and urban planning practices in high-density areas.',
+      link: 'https://www.linkedin.com/feed/update/urn:li:activity:7254790422571409409/?actorCompanyId=104458075'
     },
     {
-      image: '/blogs/courseSHM.png',
-      author: 'Dev Patel',
-      date: 'Jul 5, 2025',
-      title: 'Courses and Learning Paths',
-      excerpt: 'A curated roadmap for engineers entering structural health monitoring and IoT analytics.',
-      link: 'https://www.linkedin.com/'
+      image: '/blog/5.jfif',
+      author: 'Col Rohit Gogna',
+      date: '24 Oct, 2024',
+      title: 'The Power of Academia-Industry Collaboration',
+      excerpt: 'Academia and industry, both bring unique strengths to the table. While academic institutions excel in theoretical knowledge, research and exploration of new ideas, industry focuses on practical applications, commercialisation and scaling innovations.',
+      link: 'https://www.linkedin.com/feed/update/urn:li:activity:7255203643715395584/?actorCompanyId=104458075'
     },
     {
-  image: '/blogs/postblog1.jfif',
-      author: 'Neha Gupta',
-      date: 'Jun 16, 2025',
-      title: 'Visualizing SHM Data',
-      excerpt: 'Minimal visualization patterns that improve comprehension without overwhelming the user.',
-      link: 'https://www.linkedin.com/'
+  image: '/blog/6.png',
+      author: 'Col Rohit Gogna',
+      date: '27 Dec, 2024',
+      title: 'Event Participations',
+      excerpt: 'SPPL proudly participated in the IIT Delhi Alumni Day Presentation on 22 December 2024. The event served as a vibrant platform to showcase its patented SHM technologies and IoT-enabled sensor solutions, designed to revolutionise infrastructure safety.',
+      link: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7278361484785545216/?actorCompanyId=104458075'
     }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-sky-100">
-  <div>
-        {/* Hero */}
-        <div className="text-center py-16 bg-gradient-to-r from-sppl-blue to-sppl-dark-blue text-white">
-          <div className="max-w-3xl mx-auto px-6">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Blogs</h1>
-            <p className="text-blue-100 text-lg">Minimal insights and updates from our team — clean, clear, and classy.</p>
+      {/* Hero */}
+      <div className="text-center py-14 md:py-16 bg-gradient-to-r from-sppl-blue/95 to-sppl-dark-blue/95 text-white shadow-[0_2px_16px_-4px_rgba(36,54,80,0.10)]">
+        <div className="max-w-3xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight" style={{ fontFamily: 'Poppins, Segoe UI, sans-serif' }}>Blogs</h1>
+          <p className="text-blue-100 text-lg md:text-xl font-light">Minimal insights and updates from our team — clean, clear and classy.</p>
+        </div>
+      </div>
+
+      {/* Posts: 6 cards, 3 up and 3 down */}
+      <section className="py-14 md:py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 items-stretch">
+            {posts.map((post, i) => {
+              const isSecondRow = i >= 3;
+              const containerClass = isSecondRow ? 'lg:translate-y-3' : 'lg:-translate-y-3';
+              return (
+                <BlogCard key={i} {...post} containerClass={containerClass} />
+              );
+            })}
           </div>
         </div>
-
-        {/* Posts: 6 cards, 3 up and 3 down */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-start">
-              {posts.map((post, i) => {
-                const isSecondRow = i >= 3; // 0-2 first row, 3-5 second row
-                const containerClass = isSecondRow ? 'lg:translate-y-4' : 'lg:-translate-y-4';
-                return (
-                  <BlogCard key={i} {...post} containerClass={containerClass} />
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      </div>
+      </section>
       <Footer />
     </div>
   );

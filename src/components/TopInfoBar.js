@@ -60,7 +60,7 @@ const TopInfoBar = ({ show }) => {
             </div>
             <div className="hidden sm:flex items-center gap-3">
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/share/1CWGyN1tJW/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -70,7 +70,7 @@ const TopInfoBar = ({ show }) => {
                 <IconFacebook className="h-4 w-4" />
               </a>
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/company/sanrachna-prahari-pvt-ltd/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -80,7 +80,7 @@ const TopInfoBar = ({ show }) => {
                 <IconLinkedIn className="h-4 w-4" />
               </a>
               <a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/sanrachnaprahari_official/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"

@@ -1,43 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Projects from './pages/Projects';
-import Products from './pages/Products';
-import ProductDetails from './pages/ProductDetails';
-import Dashboard from './pages/Dashboard';
-import Blogs from './pages/Blogs';
-import BusinessVerticals from './components/BusinessVerticals';
 import Footer from './components/Footer';
 import Highlights from './components/Highlights';
 import TopInfoBar from './components/TopInfoBar';
-import { useRef } from 'react';
-import Testimonials from './components/Testimonials';
-import WhyChooseUs from './components/WhyChooseUs';
+import Loader from './components/Loader';
+
 import KeyServices from './components/KeyServices';
-import AboutPage from './pages/about/AboutPage';
-import VisionMission from './pages/about/VisionMission';
-import OurScope from './pages/about/OurScope';
-import InnovationResearch from './pages/about/InnovationResearch';
-import TrainingConsultation from './pages/about/TrainingConsultation';
-import ProcessFeatures from './pages/about/ProcessFeatures';
-import BusinessPolicy from './pages/about/BusinessPolicy';
-import RulesClientsPartners from './pages/about/RulesClientsPartners';
-import BusinessProduct from './pages/BusinessProduct';
-import BusinessServices from './pages/BusinessServices';
-import BusinessResearch from './pages/BusinessResearch';
-import BuildingHealthMonitoring from './pages/solutions/BuildingHealthMonitoring';
-import Bridges from './pages/solutions/Bridges';
-import Track from './pages/solutions/Track';
-import Tunnel from './pages/solutions/Tunnel';
-import Airport from './pages/solutions/Airport';
-import Industries from './pages/solutions/Industries';
+import Reveal from './components/Reveal';
+import TeamMembers from './components/TeamMembers';
+
 
 import ClientContactForm from './components/handlers/ClientForm';
 import PartnershipContactForm from './components/handlers/PartnershipForm';
 import OrganisationContactForm from './components/handlers/OrganisationForm';
 import CollaborationForm from './components/handlers/OrganisationForm';
+const Projects = React.lazy(() => import('./pages/Projects'));
+const Products = React.lazy(() => import('./pages/Products'));
+const ProductDetails = React.lazy(() => import('./pages/ProductDetails'));
+const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+const Blogs = React.lazy(() => import('./pages/Blogs'));
+// import BusinessVerticals from './components/BusinessVerticals';
+const Testimonials = React.lazy(() => import('./components/Testimonials'));
+const WhyChooseUs = React.lazy(() => import('./components/WhyChooseUs'));
+
+const AboutPage = React.lazy(() => import('./pages/about/AboutPage'));
+const VisionMission = React.lazy(() => import('./pages/about/VisionMission'));
+const OurScope = React.lazy(() => import('./pages/about/OurScope'));
+const InnovationResearch = React.lazy(() => import('./pages/about/InnovationResearch'));
+const TrainingConsultation = React.lazy(() => import('./pages/about/TrainingConsultation'));
+// const ProcessFeatures = React.lazy(() => import('./pages/about/ProcessFeatures'));
+const BusinessPolicy = React.lazy(() => import('./pages/about/BusinessPolicy'));
+const RulesClientsPartners = React.lazy(() => import('./pages/about/RulesClientsPartners'));
+const BusinessProduct = React.lazy(() => import('./pages/BusinessProduct'));
+const BusinessServices = React.lazy(() => import('./pages/BusinessServices'));
+const BusinessResearch = React.lazy(() => import('./pages/BusinessResearch'));
+const BuildingHealthMonitoring = React.lazy(() => import('./pages/solutions/BuildingHealthMonitoring'));
+const Bridges = React.lazy(() => import('./pages/solutions/Bridges'));
+const Track = React.lazy(() => import('./pages/solutions/Track'));
+const Tunnel = React.lazy(() => import('./pages/solutions/Tunnel'));
+const Airport = React.lazy(() => import('./pages/solutions/Airport'));
+const Industries = React.lazy(() => import('./pages/solutions/Industries'));
+const Offshore = React.lazy(() => import('./pages/solutions/Offshore'));
+const Electric = React.lazy(() => import('./pages/solutions/Electric'));
+const Prestressed = React.lazy(() => import('./pages/solutions/Presetressed'));
+
 
 // Reveal removed for instant rendering
 // Removed PageTransition for instant route changes
@@ -106,40 +115,60 @@ function App() {
             <div ref={heroRef}>
               <Hero isLoading={isLoading} />
             </div>
-            {/* Sections now render instantly (no Reveal) */}
-            <Highlights />
-            <About />
-            <KeyServices />
-            <WhyChooseUs />
-            <Testimonials />
+            {/* Smooth, lazy-like in-view reveals */}
+            <Reveal y={16}>
+              <Highlights />
+            </Reveal>
+            <Reveal y={16} delay={60}>
+              <About />
+            </Reveal>
+            <Reveal y={16} delay={100}>
+              <KeyServices />
+            </Reveal>
+            <Reveal y={16} delay={120}>
+              <Suspense fallback={<Loader label="Loading section…" size="md" />}> 
+                <WhyChooseUs />
+              </Suspense>
+            </Reveal>
+            <Reveal y={16} delay={140}>
+              <Suspense fallback={<Loader label="Loading testimonials…" size="md" />}> 
+                <Testimonials />
+              </Suspense>
+            </Reveal>
+            <Reveal y={16} delay={160}>
+              <TeamMembers />
+            </Reveal>
             <Footer/>
           </>
         } />
         {/* About pages */}
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/about/vision-mission" element={<VisionMission />} />
-        <Route path="/about/scope" element={<OurScope />} />
-        <Route path="/about/innovation-research" element={<InnovationResearch />} />
-        <Route path="/about/training-consultation" element={<TrainingConsultation />} />
-        {/* <Route path="/about/process-features" element={<ProcessFeatures />} /> */}
-        <Route path="/about/business-policy" element={<BusinessPolicy />} />
-        <Route path="/about/rules-clients-partners" element={<RulesClientsPartners />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<ProductDetails />} />
+  <Route path="/about" element={<Suspense fallback={<Loader label="Loading About…" size="lg" />}><AboutPage /></Suspense>} />
+  <Route path="/about/vision-mission" element={<Suspense fallback={<Loader label="Loading Vision & Mission…" size="lg" />}><VisionMission /></Suspense>} />
+  <Route path="/about/scope" element={<Suspense fallback={<Loader label="Loading Scope…" size="lg" />}><OurScope /></Suspense>} />
+  <Route path="/about/innovation-research" element={<Suspense fallback={<Loader label="Loading Innovation & Research…" size="lg" />}><InnovationResearch /></Suspense>} />
+  <Route path="/about/training-consultation" element={<Suspense fallback={<Loader label="Loading Training…" size="lg" />}><TrainingConsultation /></Suspense>} />
+        {/* <Route path="/about/process-features" element={<Suspense fallback={<div className="p-6 text-slate-500">Loading…</div>}><ProcessFeatures /></Suspense>} /> */}
+  <Route path="/about/business-policy" element={<Suspense fallback={<Loader label="Loading Policy…" size="lg" />}><BusinessPolicy /></Suspense>} />
+  <Route path="/about/rules-clients-partners" element={<Suspense fallback={<Loader label="Loading Rules & Clients…" size="lg" />}><RulesClientsPartners /></Suspense>} />
+  <Route path="/products" element={<Suspense fallback={<Loader label="Loading Products…" size="lg" />}><Products /></Suspense>} />
+  <Route path="/products/:id" element={<Suspense fallback={<Loader label="Loading Product…" size="lg" />}><ProductDetails /></Suspense>} />
         {/* Business Verticals pages */}
-        <Route path="/business-verticals/product" element={<BusinessProduct />} />
-        <Route path="/business-verticals/services" element={<BusinessServices />} />
-        <Route path="/business-verticals/research" element={<BusinessResearch />} />
+  <Route path="/business-verticals/product" element={<Suspense fallback={<Loader label="Loading Product Vertical…" size="lg" />}><BusinessProduct /></Suspense>} />
+  <Route path="/business-verticals/services" element={<Suspense fallback={<Loader label="Loading Services Vertical…" size="lg" />}><BusinessServices /></Suspense>} />
+  <Route path="/business-verticals/research" element={<Suspense fallback={<Loader label="Loading Research Vertical…" size="lg" />}><BusinessResearch /></Suspense>} />
         {/* Solutions pages */}
-        <Route path="/solutions/building-health-monitoring" element={<BuildingHealthMonitoring />} />
-        <Route path="/solutions/bridges" element={<Bridges />} />
-        <Route path="/solutions/track" element={<Track />} />
-        <Route path="/solutions/tunnel" element={<Tunnel />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/solutions/airport" element={<Airport />} />
-  <Route path="/solutions/industries" element={<Industries />} />
+    <Route path="/solutions/building-health-monitoring" element={<Suspense fallback={<Loader label="Loading Building Solutions…" size="lg" />}><BuildingHealthMonitoring /></Suspense>} />
+    <Route path="/solutions/bridges" element={<Suspense fallback={<Loader label="Loading Bridges…" size="lg" />}><Bridges /></Suspense>} />
+    <Route path="/solutions/track" element={<Suspense fallback={<Loader label="Loading Track…" size="lg" />}><Track /></Suspense>} />
+    <Route path="/solutions/tunnel" element={<Suspense fallback={<Loader label="Loading Tunnel…" size="lg" />}><Tunnel /></Suspense>} />
+  <Route path="/solutions/offshore" element={<Suspense fallback={<Loader label="Loading Offshore…" size="lg" />}><Offshore /></Suspense>} />
+  <Route path="/solutions/prestressed" element={<Suspense fallback={<Loader label="Loading Prestressed…" size="lg" />}><Prestressed /></Suspense>} />
+  <Route path="/solutions/electric" element={<Suspense fallback={<Loader label="Loading Electric…" size="lg" />}><Electric /></Suspense>} />
+    <Route path="/dashboard" element={<Suspense fallback={<Loader label="Loading Dashboard…" size="xl" />}><Dashboard /></Suspense>} />
+    <Route path="/projects" element={<Suspense fallback={<Loader label="Loading Projects…" size="lg" />}><Projects /></Suspense>} />
+    <Route path="/blogs" element={<Suspense fallback={<Loader label="Loading Blogs…" size="lg" />}><Blogs /></Suspense>} />
+    <Route path="/solutions/airport" element={<Suspense fallback={<Loader label="Loading Airport…" size="lg" />}><Airport /></Suspense>} />
+  <Route path="/solutions/industries" element={<Suspense fallback={<Loader label="Loading Industries…" size="lg" />}><Industries /></Suspense>} />
 
   <Route path="/contact/client" element={<ClientContactForm />} />
   <Route path="/contact/partnership" element={<PartnershipContactForm />} />

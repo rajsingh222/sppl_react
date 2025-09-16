@@ -45,15 +45,15 @@ const ProductCard = ({ image, name, description, category, id, imgSrc }) => {
         )}
       </div>
       <div className="p-6">
-        <div className="mb-2">
+        <div className="mb-2 text-center">
           <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-50 text-sppl-blue text-xs font-semibold rounded-full shadow">
             {category}
           </span>
         </div>
-        <h3 className="text-lg font-normal text-gray-800 mb-2 group-hover:text-sppl-blue transition-colors tracking-tight">
+        <h3 className="text-lg font-normal text-gray-800 mb-2 group-hover:text-sppl-blue transition-colors tracking-tight text-center">
           {name}
         </h3>
-        <p className="text-gray-600 text-base leading-relaxed mb-4">
+        <p className="text-gray-600 text-base leading-relaxed mb-4 text-justify">
           {description}
         </p>
         <button
@@ -71,9 +71,9 @@ const ProductCard = ({ image, name, description, category, id, imgSrc }) => {
 const ProductSection = ({ title, description, cards, category, overview, features, hideDetails }) => (
   <section className="py-16">
     <div className="max-w-7xl mx-auto px-6">
-      <div className="text-center mb-12">
+    <div className="text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-extrabold text-sppl-blue mb-4 drop-shadow-lg tracking-tight">{title}</h2>
-  <p className="text-lg text-gray-800 max-w-3xl mx-auto font-medium">{description}</p>
+  <p className="text-lg text-gray-800 max-w-3xl mx-auto font-medium text-justify">{description}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -91,7 +91,7 @@ const ProductSection = ({ title, description, cards, category, overview, feature
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-gradient-to-br from-blue-100 via-white to-blue-50 rounded-2xl p-10 border border-blue-200 shadow-lg backdrop-blur-md">
             <h3 className="text-2xl font-bold text-sppl-blue mb-4">Overview</h3>
-            <p className="text-gray-800 leading-relaxed text-base">
+            <p className="text-gray-800 leading-relaxed text-base text-justify">
               {overview || (
                 <>Our {title.toLowerCase()} solutions provide comprehensive monitoring capabilities designed for modern infrastructure needs. Built with cutting-edge technology and user-centric design principles, these systems deliver reliable performance and actionable insights.</>
               )}
@@ -131,8 +131,8 @@ const Products = () => {
   const navigate = useNavigate();
   const productSections = [
     {
-      title: "Decentralised Solutions",
-      description: "Distributed monitoring systems that operate independently across multiple locations",
+      title: "Decentralised Systems",
+     
       category: "Decentralised",
       overview: "This system delivers advanced structural monitoring with real-time data acquisition and analysis from multiple sensors. It can instantly distribute alerts and updates to remote locations over the internet, ensuring rapid response during emergencies such as earthquakes.With its quick analysis feature, the system offers valuable insights into how dynamic loads interact with a structure’s modal characteristics—making it a powerful tool for engineers and researchers. Highly versatile, it supports various unit types and sensor configurations for advanced analysis.",
       features: [
@@ -155,7 +155,7 @@ const Products = () => {
     },
     {
       title: "Centralised Systems",
-      description: "Unified monitoring platforms with centralized control and data management",
+    
       category: "Centralised",
       overview: "This system delivers advanced monitoring capabilities for structures by using intelligent software to gather and analyze real-time data from multiple sensors. It can instantly distribute alerts and data to remote locations over the internet, ensuring rapid response in emergencies such as earthquakes.With its quick analysis feature, the system provides valuable insights into the interaction between dynamic loads and a structure’s modal characteristics—making it a powerful tool for engineers and researchers. Highly versatile, it supports different sensor types and advanced accelerometers for in-depth structural analysis.",
       features: [
@@ -172,7 +172,7 @@ const Products = () => {
     },
     {
       title: "All-in-One Solutions",
-      description: "Comprehensive monitoring packages that combine multiple functionalities",
+      
       category: "All-in-One",
       overview: "This System represents a new benchmark in Structural Health Monitoring (SHM). This fully digital standalone unit is engineered for harsh environments and confined spaces, delivering precise control and advanced data acquisition in a compact rugged design. With an operating range from -40 °C to +55 °C and compliance with international safety and EMC standards, it is a reliable choice for a wide variety of SHM applications.",
       features: [
@@ -186,7 +186,7 @@ const Products = () => {
     },
     {
       title: "Portable Systems",
-      description: "Mobile and transportable monitoring solutions for field operations",
+      
       category: "Portable",
       overview: "A portable, battery-powered system designed for reliable vibration monitoring in structures. With wireless connectivity, it’s easy to set up anywhere, supporting multiple sensor types and extended coverage.",
 
@@ -206,7 +206,7 @@ const Products = () => {
     },
     {
       title: "User-Focused Solutions",
-      description: "Intuitive interfaces and user experience designed for all skill levels",
+    
       category: "User-Focused",
       overview: "A Smarter, Cost-Effective Way to Monitor Any Structure From single-story homes to high-rise buildings and unique constructions, this SHM system delivers reliable and accurate monitoring at an affordable cost. With advanced accelerometer technology and seamless cloud integration. It provides real-time insights with unmatched precision. Connect one or more Pulse units for effortless data acquisition, processing and structural health tracking — anytime, anywhere.",
 
@@ -217,13 +217,13 @@ const Products = () => {
 'Versatile power options, customizable settings and seamless tool integration',
       ],
       cards: [
-  { id: "Pulse", name: "Personalized dashboard" ,imgSrc: "/products/items/Pulse-Photoroom (1).jpg"},
+  
   { id: "xPlorer",  name: "Intelligent interface that adapts to users",imgSrc: "/products/items/xplo-Photoroom.jpg" },
       ]
     },
     {
       title: "Sensor Technology",
-      description: "Advanced sensor systems for precise data collection and monitoring",
+      
       category: "Sensors",
       hideDetails: true,
       features: [

@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+ 
 
 const bgImages = [
    '/solution/building-3.jpg',
@@ -33,7 +34,7 @@ export default function BuildingHealthMonitoring() {
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg">
               <span className="bg-gradient-to-r from-emerald-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">Next-Generation</span>{' '}Building Health Monitoring
             </h1>
-            <p className="mt-6 text-lg md:text-2xl font-medium text-blue-100 max-w-3xl leading-relaxed">Integrating advanced sensors and analytics to detect issues early, reduce costs, and extend building life.</p>
+            <p className="mt-6 text-lg md:text-2xl font-medium text-blue-100 max-w-3xl leading-relaxed">Integrating advanced sensors and analytics to detect issues early, reduce costs and extend building life.</p>
           </div>
         </div>
       </div>
@@ -54,7 +55,7 @@ export default function BuildingHealthMonitoring() {
                 <span className="block text-slate-800 mt-2">Solutions</span>
               </h2>
             </div>
-            <div className="text-slate-800 text-lg leading-relaxed space-y-6">
+            <div className="text-slate-800 text-lg leading-relaxed space-y-6 text-justify">
               <p>We provide continuous monitoring solutions tailored for residential, commercial and industrial buildings—detecting structural changes before they become critical.</p>
               <p>Our systems combine low-power sensors, robust communications and predictive analytics to enable targeted maintenance and safer occupancy.</p>
             </div>
@@ -66,32 +67,16 @@ export default function BuildingHealthMonitoring() {
 
   {/* Context & Approach (background video with balanced readability) */}
       <section className="relative w-full h-[65vh] min-h-[520px] overflow-hidden">
-        {/* Background video with brightness control & poster fallback */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/solution/b2.mp4" /* corrected existing asset */
-          poster="/solution/building-1.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          style={{ filter: 'brightness(0.78) contrast(1.05) saturate(1.0)' }}
-        />
-        {/* Softer overlays (lighten overall vs previous) */}
-        <div className="absolute inset-0 bg-slate-950/15 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/65 via-slate-900/45 to-slate-900/30" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.08)_70%,transparent_85%)]" />
-        {/* Content */}
-        <div className="relative h-full flex items-center">
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-950 via-slate-900/90 to-slate-900/80" />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.04)_35%,transparent_70%)]" />
+        <div className="relative z-20 h-full flex items-center">
           <div className="w-full max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 md:gap-16 text-white">
               {/* Why Monitoring Card */}
               <div className="relative space-y-5 pl-4 rounded-xl p-6 backdrop-blur-xl bg-gradient-to-br from-slate-900/55 via-slate-800/45 to-slate-900/50 ring-1 ring-white/10 shadow-[0_6px_22px_-6px_rgba(0,0,0,0.45)]">
                 <div className="absolute inset-px rounded-[10px] pointer-events-none bg-gradient-to-br from-white/10/5 via-transparent to-white/5" />
                 <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-300 to-blue-400">Building</span> Monitoring Matters</h3>
-                <div className="h-1 w-16 bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-400 rounded-full" />
+                <div className="h-1 w-16 bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-400 rounded-full text-justify" />
                 <p className="text-slate-100 leading-relaxed text-base md:text-lg max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">Buildings face constant stresses from loads, seismic activity, temperature changes, and aging. Without monitoring, small defects can escalate into major risks, costly repairs, or failures.</p>
               </div>
               {/* Approach Card */}

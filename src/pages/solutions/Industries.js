@@ -1,12 +1,12 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+ 
 
 const bgImages = [
-  '/solution/building-5.jpg',
-  '/solution/building-1.jpg',
-  '/solution/2155864.jpg',
-  '/solution/building-3.jpg'
+  '/img/in1.jpg',
+  '/img/in2.jpg',
+  '/img/in3.jpeg',
 ];
 
 export default function Industries() {
@@ -29,9 +29,9 @@ export default function Industries() {
         <div className="relative h-full flex items-center px-8 md:px-16">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-lg">
-              <span className="bg-gradient-to-r from-emerald-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">Next-Generation</span>{' '}Building Health Monitoring
+              <span className="bg-gradient-to-r from-emerald-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">Industrial</span>{' '}Plant Health Monitoring
             </h1>
-            <p className="mt-6 text-lg md:text-2xl font-medium text-blue-100 max-w-3xl leading-relaxed">Integrating advanced sensors and analytics to detect issues early, reduce costs, and extend building life.</p>
+            <p className="mt-6 text-lg md:text-2xl font-medium text-blue-100 max-w-3xl leading-relaxed">Specialized monitoring for industrial plants—enhancing safety, reliability and uptime.</p>
           </div>
         </div>
       </div>
@@ -48,13 +48,14 @@ export default function Industries() {
               </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-slate-900">
                 <span className="block">Comprehensive</span>
-                <span className="block mt-3"><span className="bg-gradient-to-r from-sky-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Building</span></span>
+                <span className="block mt-3"><span className="bg-gradient-to-r from-sky-600 via-blue-500 to-cyan-400 bg-clip-text text-transparent">Industrial</span></span>
                 <span className="block text-slate-800 mt-2">Solutions</span>
               </h2>
             </div>
-            <div className="text-slate-800 text-lg leading-relaxed space-y-6">
-              <p>We provide continuous monitoring solutions tailored for residential, commercial and industrial buildings—detecting structural changes before they become critical.</p>
-              <p>Our systems combine low-power sensors, robust communications and predictive analytics to enable targeted maintenance and safer occupancy.</p>
+            <div className="text-slate-800 text-lg leading-relaxed space-y-6 text-justify">
+              <p>We deliver comprehensive monitoring solutions for industrial and manufacturing facilities of every scale, ranging from steel and cement plants to power, chemical, and large production complexes.</p>
+<p>Our systems ensure structural reliability, safer working environments, optimized maintenance, and uninterrupted operations, while extending the lifespan of critical assets and supporting compliance with industry standards.</p>
+
             </div>
           </div>
         </div>
@@ -64,33 +65,17 @@ export default function Industries() {
 
   {/* Context & Approach (background video with balanced readability) */}
       <section className="relative w-full h-[65vh] min-h-[520px] overflow-hidden">
-        {/* Background video with brightness control & poster fallback */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/solution/b2.mp4" /* corrected existing asset */
-          poster="/solution/building-1.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          style={{ filter: 'brightness(0.78) contrast(1.05) saturate(1.0)' }}
-        />
-        {/* Softer overlays (lighten overall vs previous) */}
-        <div className="absolute inset-0 bg-slate-950/15 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/65 via-slate-900/45 to-slate-900/30" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.08)_70%,transparent_85%)]" />
-        {/* Content */}
-        <div className="relative h-full flex items-center">
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-950 via-slate-900/90 to-slate-900/80" />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.04)_35%,transparent_70%)]" />
+        <div className="relative z-20 h-full flex items-center">
           <div className="w-full max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 md:gap-16 text-white">
               {/* Why Monitoring Card */}
               <div className="relative space-y-5 pl-4 rounded-xl p-6 backdrop-blur-xl bg-gradient-to-br from-slate-900/55 via-slate-800/45 to-slate-900/50 ring-1 ring-white/10 shadow-[0_6px_22px_-6px_rgba(0,0,0,0.45)]">
                 <div className="absolute inset-px rounded-[10px] pointer-events-none bg-gradient-to-br from-white/10/5 via-transparent to-white/5" />
-                <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-300 to-blue-400">Building</span> Monitoring Matters</h3>
+                <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-300 to-blue-400">Industrial</span>Health Monitoring Matters</h3>
                 <div className="h-1 w-16 bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-400 rounded-full" />
-                <p className="text-slate-100 leading-relaxed text-base md:text-lg max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">Buildings face constant stresses from loads, seismic activity, temperature changes, and aging. Without monitoring, small defects can escalate into major risks, costly repairs, or failures.</p>
+                <p className="text-slate-100 leading-relaxed text-base md:text-lg max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">Industrial plants endure constant stress from heavy machinery, vibrations, heat and chemical exposure. Without monitoring, minor structural issues can quickly escalate into costly failures, safety risks and downtime.</p>
               </div>
               {/* Approach Card */}
               <div className="relative space-y-5 pl-4 rounded-xl p-6 backdrop-blur-xl bg-gradient-to-br from-slate-900/55 via-slate-800/45 to-slate-900/50 ring-1 ring-white/10 shadow-[0_6px_22px_-6px_rgba(0,0,0,0.45)]">
@@ -99,10 +84,10 @@ export default function Industries() {
                 <div className="h-1 w-16 bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-400 rounded-full" />
                 <ul className="text-slate-100 text-base md:text-lg leading-relaxed space-y-3 max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]">
                   {[
-                   'Smart sensors for vibration, strain, tilt & displacement',
-'Real-time dashboards with instant alerts',
-'Predictive analytics for early failure forecasting',
-'Custom solutions for building type, age & usage'
+                   'Smart sensors for vibration, strain & thermal stress',
+  'Real-time dashboards for machinery & structural health',
+  'Predictive analytics to minimize downtime',
+  'Tailored solutions for different plant types & operations'
                   ].map(item => (
                     <li key={item} className="flex items-start gap-2">
                       <span className="mt-[6px] h-2 w-2 rounded-full bg-gradient-to-r from-sky-300 to-cyan-300 shadow-[0_0_0_3px_rgba(255,255,255,0.1)]" />
@@ -133,11 +118,10 @@ export default function Industries() {
               <div className="mt-2 h-[3px] w-16 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-400 rounded-full" />
               <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-[15px] text-slate-700">
                 {[
-                  'Early detection of cracks & structural fatigue',
-'Improved safety for occupants & users',
-'Reduced downtime & repair costs',
-'Compliance with safety regulations',
-'Extended service life of buildings'
+                'Reduced unplanned shutdowns & maintenance costs',
+  'Safer working environment for employees',
+  'Compliance with industrial safety standards',
+  'Extended life of plant structures & assets'
                 ].map(item => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-sky-500/10 to-cyan-500/10 ring-1 ring-sky-200 text-[11px] text-sky-700">✓</span>
@@ -182,28 +166,36 @@ export default function Industries() {
               </div>
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <div className="flex items-start gap-3 p-4 rounded-lg ring-1 ring-slate-200 bg-white/70 hover:ring-sky-400/40 transition">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-white ring-1 ring-slate-200 text-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]">🛡️</div>
+                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-white ring-1 ring-slate-200 text-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-sky-600"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 4v5c0 5-3.5 9-7 9s-7-4-7-9V7l7-4z"/></svg>
+                  </div>
                   <div>
                     <div className="font-semibold text-slate-800 text-sm">Safety first</div>
                     <div className="text-xs text-slate-600 leading-snug">Faster anomaly detection prevents incidents.</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 rounded-lg ring-1 ring-slate-200 bg-white/70 hover:ring-sky-400/40 transition">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-white ring-1 ring-slate-200 text-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]">📉</div>
+                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-white ring-1 ring-slate-200 text-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-sky-600"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M3 3v4m0 10v4m18-4v4M3 7c3 0 6 8 9 8s6-8 9-8"/></svg>
+                  </div>
                   <div>
                     <div className="font-semibold text-slate-800 text-sm">Lower OPEX</div>
                     <div className="text-xs text-slate-600 leading-snug">Plan maintenance, avoid emergency repairs.</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 rounded-lg ring-1 ring-slate-200 bg-white/70 hover:ring-sky-400/40 transition">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-white ring-1 ring-slate-200 text-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]">⏱️</div>
+                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-white ring-1 ring-slate-200 text-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-sky-600"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M12 8V4m0 0h4m-4 0H8m9 5l2 2m-1 9a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </div>
                   <div>
                     <div className="font-semibold text-slate-800 text-sm">Real‑time</div>
                     <div className="text-xs text-slate-600 leading-snug">Continuous data with actionable alerts.</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 rounded-lg ring-1 ring-slate-200 bg-white/70 hover:ring-sky-400/40 transition">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-white ring-1 ring-slate-200 text-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]">✅</div>
+                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-white ring-1 ring-slate-200 text-xl shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-sky-600"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  </div>
                   <div>
                     <div className="font-semibold text-slate-800 text-sm">Compliance</div>
                     <div className="text-xs text-slate-600 leading-snug">Audit‑ready records and reporting.</div>
@@ -226,17 +218,24 @@ export default function Industries() {
           </div>
           <div className="grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
             {[
-              { icon: '🏙️', label: 'High-rise commercial & residential towers' },
-              { icon: '🏭', label: 'Industrial & manufacturing facilities' },
-              { icon: '🏥', label: 'Hospitals & critical infrastructure' },
-              { icon: '🏛️', label: 'Heritage & historical buildings' },
-              { icon: '🏟️', label: 'Stadiums & auditoriums' }
+              { label: 'Steel & cement plants', icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-sky-700"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M3 21V10l5 3V10l5 3V7l8 4v10"/></svg>
+              )},
+              { label: 'Chemical & petrochemical facilities', icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-sky-700"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M6 2v6l-4 7a6 6 0 006 6 6 6 0 006-6l-4-7V2"/></svg>
+              )},
+              { label: 'Power generation units', icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-sky-700"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+              )},
+              { label: 'Large manufacturing complexes', icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-6 w-6 text-sky-700"><path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M7 21v-2m4 2v-2m4 2v-2m4 2v-2M3 21V10l5 3V10l5 3V7l8 4v10"/></svg>
+              )}
             ].map(({ icon, label }) => (
               <div key={label} className="group relative flex flex-col rounded-xl p-6 bg-white shadow-sm ring-1 ring-slate-200 hover:shadow-lg hover:ring-sky-400/50 transition-all overflow-hidden" style={{ fontFamily: "'Poppins','Segoe UI',sans-serif" }}>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-sky-50 via-cyan-50 to-blue-50" />
                 <div className="relative flex flex-col gap-4">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white ring-1 ring-slate-200 text-3xl select-none shadow-sm">{icon}</div>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white ring-1 ring-slate-200 select-none shadow-sm">{icon}</div>
                     <h4 className="font-medium text-slate-800 text-sm md:text-[15px] leading-snug tracking-tight">{label}</h4>
                   </div>
                   <div className="h-[3px] w-20 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-400 rounded-full scale-x-0 group-hover:scale-x-100 origin-left transition-all duration-500" />

@@ -5,15 +5,18 @@ const Footer = () => {
   const logos = [
     'AIIMS_New_Delhi.png',
     'avgc.png',
+    'arctic.png',
     'Fitt.png',
     'Indian_Institute_of_Technology_Delhi_Logo.svg.png',
     'ishms-logo.png',
     'Larsen&Toubro_logo.svg',
     'moc 1.svg',
-    'MSME Logo Vector.jpg',
+    'ms.jpg',
     'nhai.jpg',
-    'railways 1.webp',
+    'rail.webp',
     'richter.png',
+    'en.jpg',
+    
   ];
 
   return (
@@ -122,11 +125,11 @@ const Footer = () => {
             <ul className="space-y-2.5 text-[15px]">
               {[
                 { label: 'About SPPL', href: '/about' },
-                { label: 'Vision and Mission', href: '/vision-mission' },
-                { label: 'Innovation & Research', href: '/innovation-research' },
-                { label: 'Our Features', href: '/features' },
-                { label: 'Business Policy', href: '/business-policy' },
-                { label: 'Training & Consultation', href: '/training-consultation' },
+                { label: 'Vision and Mission', href: '/about/vision-mission' },
+                { label: 'Innovation & Research', href: '/about/innovation-research' },
+                
+                { label: 'Business Policy', href: '/about/business-policy' },
+                { label: 'Training & Consultation', href: '/about/training-consultation' },
               ].map((link) => (
                 <li key={link.label}>
                   <a

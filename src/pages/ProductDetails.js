@@ -189,8 +189,8 @@ const productData = [
 'Compatible with Pulse units and other wireless monitoring devices.'
 ], imgSrc: '/products/items/xNet-Photoroom.jpg' },
   // User-Focused
-  { id: 'Pulse', name: 'Pulse', category: 'User-Focused',  overview: 'Personalized structural health monitoring dashboard delivering actionable real-time insights.', features: [ 'Customizable widgets', 'Real-time alerting', 'Analytics & reporting exports', 'Multi-role access control' ], imgSrc: '/products/items/Pulse-Photoroom (1).jpg' },
-  { id: 'xPlorer', name: 'xPlorer', category: 'User-Focused', overview: 'Adaptive intelligent interface that adjusts visualizations and controls to user context.', features: [ 'Context-aware UI', 'Seamless device scaling', 'Integrated data annotations', 'Fast search & filtering' ], imgSrc: '/products/items/xplo-Photoroom.jpg' },
+ 
+  { id: 'xPlorer', name: 'Intelligent interface that adapts to users', category: 'User-Focused', overview: 'Adaptive intelligent interface that adjusts visualizations and controls to user context.', features: [ 'Context-aware UI', 'Seamless device scaling', 'Integrated data annotations', 'Fast search & filtering' ], imgSrc: '/products/items/xplo-Photoroom.jpg' },
   // Sensors
   { id: 'smart-sensors', name: 'Smart Sensors', category: 'Sensors',  overview: 'Our linearized velocitimeters are built using geophone cells with eigen-frequencies of either 4.5 Hz or 2 Hz. Although this approach has certain limitations, it allows achieving a flat response bandwidth that extends beyond the geophone’s natural band by shifting the eigen-frequency to a lower value. This technique is particularly effective for noise surveys, as the sensors demonstrate improved tolerance to tilting. Additionally, the high amplification factor (400 V/m/s) is advantageous when working with low-cost digitizers with poor signal-to-noise ratios or with older equipment.',
      features: ['Extended flat bandwidth by lowering the eigen-frequency beyond the geophone’s natural band.',
@@ -261,7 +261,7 @@ const ProductDetails = () => {
               {/* Overview */}
               <section className="mb-8">
                 <h2 className="text-2xl font-semibold text-sppl-blue mb-2">Overview</h2>
-                <p className="text-gray-700 leading-relaxed bg-white rounded-xl p-6 shadow border border-gray-100">{product.overview}</p>
+                <p className="text-gray-700 leading-relaxed bg-white rounded-xl p-6 shadow border border-gray-100 text-justify">{product.overview}</p>
               </section>
               {/* Key Features */}
               <section>

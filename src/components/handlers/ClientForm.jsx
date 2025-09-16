@@ -32,8 +32,8 @@ export default function ClientForm() {
 
     emailjs
       .send(
-        "service_at454kd", // 🔹 Replace with your EmailJS Service ID
-        "template_m8c6qwj", // 🔹 Replace with your EmailJS Client Template ID
+        "service_zmcmnb5", // 🔹 Replace with your EmailJS Service ID
+        "template_umzwlrr", // 🔹 Replace with your EmailJS Client Template ID
         formData,
         "2F2u4xMYmzJhmmsE-" // 🔹 Replace with your EmailJS Public Key
       )

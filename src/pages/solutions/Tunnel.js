@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+ 
 
 const bgImages = [
   '/solution/t4.jpg',
@@ -48,7 +49,7 @@ export default function Tunnel() {
                 <span className="block text-slate-800 mt-2">Solutions</span>
               </h2>
             </div>
-            <div className="text-slate-800 text-lg leading-relaxed space-y-6">
+            <div className="text-slate-800 text-lg leading-relaxed space-y-6 text-justify">
             <p>We deliver advanced structural health monitoring systems for road, rail, metro, and utility tunnels. Our solutions track stress, deformation, vibration, and seepage in real time, ensuring safety during both construction and operation phases.</p>
             <p>With extensive expertise across critical tunneling projects, we provide cost-effective monitoring solutions that protect lives, optimize maintenance, and extend the service life of underground infrastructure.</p>
             </div>
@@ -58,22 +59,9 @@ export default function Tunnel() {
       <div className="w-full h-[3px] bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-400/80" />
       {/* Context & Approach (unified video styling) */}
       <section className="relative w-full h-[65vh] min-h-[520px] overflow-hidden">
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/solution/b4.mp4" /* TODO: replace with tunnel specific video */
-          poster="/solution/building-1.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          style={{ filter: 'brightness(0.78) contrast(1.05) saturate(1.0)' }}
-        />
-        <div className="absolute inset-0 bg-slate-950/15 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/65 via-slate-900/45 to-slate-900/30" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.08)_70%,transparent_85%)]" />
-        <div className="relative h-full flex items-center">
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-950 via-slate-900/90 to-slate-900/80" />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.04)_35%,transparent_70%)]" />
+        <div className="relative z-20 h-full flex items-center">
           <div className="w-full max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 md:gap-16 text-white">
               <div className="relative space-y-5 pl-4 rounded-xl p-6 backdrop-blur-xl bg-gradient-to-br from-slate-900/55 via-slate-800/45 to-slate-900/50 ring-1 ring-white/10 shadow-[0_6px_22px_-6px_rgba(0,0,0,0.45)]">

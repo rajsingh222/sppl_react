@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { DASHBOARD_URL } from '../config';
 
 const CaretDown = ({ className = "h-4 w-4" }) => (
   <svg className={className} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -36,6 +37,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const searchRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,13 +51,34 @@ export default function Navbar() {
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsSearchOpen(false);
   }, [location.pathname, location.hash]);
+
+  // Close search on outside click or Escape
+  useEffect(() => {
+    if (!isSearchOpen) return;
+    const handleDocClick = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setIsSearchOpen(false);
+      }
+    };
+    const handleKey = (e) => {
+      if (e.key === 'Escape') setIsSearchOpen(false);
+    };
+    document.addEventListener('mousedown', handleDocClick);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleDocClick);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, [isSearchOpen]);
 
   const toggleDropdown = (label) => {
     setOpenDrops(prev => ({ ...prev, [label]: !prev[label] }));
   };
 
   const navItems = [
+    { label: 'Home', to: '/' },
     { label: 'About', to: '/about', dropdown: [
       { label: 'About SPPL', to: '/about' },
       { label: 'Vision and Mission', to: '/about/vision-mission' },
@@ -72,18 +95,22 @@ export default function Navbar() {
       { label: 'Research and Development', to: '/business-verticals/research' },
     ]},
     { label: 'Solutions', to: '/solutions/building-health-monitoring', dropdown: [
-      { label: 'Building Health Monitoring', to: '/solutions/building-health-monitoring' },
-      { label: 'Bridge Health Monitoring', to: '/solutions/bridges' },
-      { label: 'Track Health Monitoring', to: '/solutions/track' },
-      { label: 'Tunnel Health Monitoring', to: '/solutions/tunnel' },
-      { label: 'Airport & Runways', to: '/solutions/airport' },
-      { label: 'Industries', to: '/solutions/industries' },
+       { label: 'Bridge Health Monitoring', to: '/solutions/bridges', icon: 'bridge' },
+      { label: 'Building Health Monitoring', to: '/solutions/building-health-monitoring', icon: 'building' },
+     
+      { label: 'Rail & Road', to: '/solutions/track', icon: 'track' },
+      { label: 'Tunnel Health Monitoring', to: '/solutions/tunnel', icon: 'tunnel' },
+      { label: 'Airport & Runways', to: '/solutions/airport', icon: 'airport' },
+      { label: 'Industrial Units', to: '/solutions/industries', icon: 'industry' },
+      { label: 'Offshore & Hydraulic', to: '/solutions/offshore', icon: 'waves' },
+      { label: 'Prestressed Structures', to: '/solutions/prestressed', icon: 'bolt' },
+      { label: 'Electric Power & Communication', to: '/solutions/electric', icon: 'power' },
     ]},
     { label: 'Products', to: '/products' },
     { label: 'Projects', to: '/projects' },
     { label: 'Blogs', to: '/blogs' },
     { label: 'Dashboard', to: '/dashboard' },
-    { label: 'Gallery', to: '/#gallery' },
+    // { label: 'Gallery', to: '/#gallery' },
     { label: 'Contact', to: '/contact', dropdown: [
       { label: 'Client', to: '/contact/client' },
       { label: 'Partnership', to: '/contact/partnership' },
@@ -126,7 +153,7 @@ export default function Navbar() {
             />
             <div className="text-left">
               <div className="text-3xl font-bold text-sppl-blue leading-tight">SPPL India</div>
-              <div className="text-base text-gray-600">An IIT Delhi Company</div>
+              <div className="text-base text-red-800">An IIT Delhi Company</div>
             </div>
           </Link>
 
@@ -138,7 +165,7 @@ export default function Navbar() {
                 <div key={item.label} className={`relative group`}>
                   <Link
                     to={(item.to === '/products' && location.search.includes('section=')) ? `/products${location.search}` : item.to}
-                    className={`nav-link-compact px-3 ${item.dropdown ? 'pr-8' : ''} ${
+                    className={`nav-link-compact px-3 text-gray-800 ${item.dropdown ? 'pr-8' : ''} ${
                       (activeItem === 'home' && item.to === '/') ||
                       (activeItem === 'about' && item.to === '/about') ||
                       (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
@@ -152,6 +179,20 @@ export default function Navbar() {
                         : ''
                     }`}
                     onClick={(e) => {
+                      // Disable base Contact navigation; only use dropdown links
+                      if (item.label === 'Contact') {
+                        e.preventDefault();
+                        setActiveItem('contact');
+                        return; // don't navigate to /contact (no route)
+                      }
+                      // External dashboard redirect full screen
+                      if (item.label === 'Dashboard') {
+                        e.preventDefault();
+                        if (DASHBOARD_URL) {
+                          window.location.href = DASHBOARD_URL; // leave the SPA for true full screen
+                          return;
+                        }
+                      }
                       // Home
                       if (item.to === '/') {
                         e.preventDefault();
@@ -202,7 +243,7 @@ export default function Navbar() {
                         (activeItem === 'business verticals' && item.to.startsWith('/business-verticals')) ||
                         (activeItem === 'solutions' && item.to.startsWith('/solutions')) ||
                         (activeItem === 'contact' && item.to.startsWith('/contact'))
-                          ? 'text-white' : 'text-gray-500 group-hover:text-white'
+                          ? 'text-white' : 'text-gray-700 group-hover:text-white'
                       }`}>
                         <CaretDown className="h-4 w-4" />
                       </span>
@@ -210,10 +251,46 @@ export default function Navbar() {
                   </Link>
                   {item.dropdown && (
                     <div className="pointer-events-none absolute left-0 mt-2 min-w-max w-56 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-[95]">
-                      <div className="rounded-xl border border-gray-200 bg-white/95 backdrop-blur-md shadow-xl p-2">
+                      <div className="rounded-xl border border-gray-200 bg-white/95 backdrop-blur-md shadow-xl p-2 text-gray-800">
                         {item.dropdown.map(sub => (
-                          <Link key={sub.label} to={sub.to} className="dropdown-item">
-                            {sub.label}
+                          <Link key={sub.label} to={sub.to} className="dropdown-item flex items-center gap-2">
+                            {sub.icon && (
+                              <span className="inline-flex h-4 w-4 text-gray-600">
+                                {sub.icon === 'building' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M6 21V7l6-3 6 3v14M9 10h1m4 0h1m-6 3h1m4 0h1m-6 3h1m4 0h1"/></svg>
+                                )}
+                                {sub.icon === 'bridge' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M3 19V9m18 10V9M3 13h18M7 19v-6m10 6v-6"/></svg>
+                                )}
+                                {sub.icon === 'track' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M8 3v18M16 3v18M3 7h18M3 11h18M3 15h18"/>
+                                  </svg>
+                                )}
+                                {sub.icon === 'tunnel' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M4 19V9a8 8 0 0116 0v10M9 19v-6a3 3 0 116 0v6"/></svg>
+                                )}
+                                {sub.icon === 'airport' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M2 19h20M12 3l3 7h5l-8 6 3 5-3-2-3 2 3-5-8-6h5l3-7z"/></svg>
+                                )}
+                                {sub.icon === 'industry' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M3 21V10l5 3V10l5 3V7l8 4v10"/>
+                                    <path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M7 21v-2m4 2v-2m4 2v-2m4 2v-2"/>
+                                  </svg>
+                                )}
+                                {sub.icon === 'waves' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M3 15c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M3 19c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2"/></svg>
+                                )}
+                                {sub.icon === 'bolt' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                                )}
+                                {sub.icon === 'power' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" d="M12 2v10m6.364-6.364a9 9 0 11-12.728 0"/></svg>
+                                )}
+                              </span>
+                            )}
+                            <span>{sub.label}</span>
                           </Link>
                         ))}
                       </div>
@@ -225,14 +302,13 @@ export default function Navbar() {
 
             {/* Search Icon + Panel pinned at far right of right pane */}
             <div
+              ref={searchRef}
               className="flex items-center relative ml-4"
-              onMouseEnter={() => { setIsSearchOpen(true); }}
-              onMouseLeave={() => { setIsSearchOpen(false); }}
             >
               <button
                 aria-label="Search"
                 onClick={() => { setIsSearchOpen(s => !s); setQuery(""); }}
-                className="p-2 rounded-full text-gray-600 hover:text-white hover:bg-sppl-dark-blue bg-gray-100 transition-colors"
+                className="p-2 rounded-full text-gray-800 hover:text-white hover:bg-sppl-dark-blue bg-gray-100 transition-colors"
               >
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -256,14 +332,19 @@ export default function Navbar() {
                     {filtered.length > 0 ? (
                       <div className="max-h-64 overflow-auto">
                         {filtered.map(res => (
-                          <Link key={(res.parent ? res.parent + '-' : '') + res.label} to={res.to} className="dropdown-item">
+                          <Link
+                            key={(res.parent ? res.parent + '-' : '') + res.label}
+                            to={res.to}
+                            className="dropdown-item"
+                            onClick={() => { setIsSearchOpen(false); setQuery(''); }}
+                          >
                             {res.parent && <span className="text-gray-400 mr-2">{res.parent} ›</span>}
                             {res.label}
                           </Link>
                         ))}
                       </div>
                     ) : (
-                      <div className="px-3 py-2 text-sm text-gray-500">{query ? 'No matches' : 'Type to search menu'}</div>
+                      <div className="px-3 py-2 text-sm text-gray-700">{query ? 'No matches' : 'Type to search menu'}</div>
                     )}
                   </div>
                 </div>
@@ -276,7 +357,7 @@ export default function Navbar() {
             <button
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               onClick={() => setIsMobileMenuOpen((s) => !s)}
-              className="p-2 rounded-lg text-gray-700 hover:text-white hover:bg-sppl-dark-blue bg-gray-100 transition-colors"
+              className="p-2 rounded-lg text-gray-800 hover:text-white hover:bg-sppl-dark-blue bg-gray-100 transition-colors"
             >
               {isMobileMenuOpen ? (
                 // X icon
@@ -323,6 +404,18 @@ export default function Navbar() {
                         : ''
                     }`}
                     onClick={(e) => {
+                      if (item.label === 'Contact') {
+                        e.preventDefault();
+                        setActiveItem('contact');
+                        return;
+                      }
+                      if (item.label === 'Dashboard') {
+                        e.preventDefault();
+                        if (DASHBOARD_URL) {
+                          window.location.href = DASHBOARD_URL;
+                          return;
+                        }
+                      }
                       if (item.to === '/') {
                         e.preventDefault();
                         if (location.pathname !== '/') navigate('/');
@@ -346,7 +439,7 @@ export default function Navbar() {
                   </Link>
                   {isDrop && (
                     <button
-                      className="ml-2 p-2 text-gray-600 hover:text-sppl-blue"
+                      className="ml-2 p-2 text-gray-800 hover:text-sppl-blue"
                       aria-expanded={isOpen}
                       aria-controls={`mobile-drop-${item.label}`}
                       onClick={() => toggleDropdown(item.label)}
@@ -366,7 +459,7 @@ export default function Navbar() {
                       <Link
                         key={sub.label}
                         to={sub.to}
-                        className="block px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50"
+                        className="block px-3 py-2 rounded-lg text-gray-800 hover:bg-gray-50"
                         onClick={() => {
                           setActiveItem(item.label.toLowerCase());
                           setIsMobileMenuOpen(false);

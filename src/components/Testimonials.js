@@ -4,55 +4,14 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 're
 const Testimonials = () => {
 	const baseItems = useMemo(
 		() => [
-			{
-				id: 1,
-				quote:
-					'SPPL delivered a robust SHM deployment on time. Their engineering depth and ability to simplify complexity stood out.',
-				name: 'Ananya Singh',
-				role: 'Project Lead, Metro Infrastructure',
-				company: 'MetroWorks',
-				logo: '/logo/richter.png',
-			},
-			{
-				id: 2,
-				quote:
-					'Their dashboards are clean and actionable. We moved from alerts to insights without drowning in noise.',
-				name: 'Rohit Sharma',
-				role: 'Head of Operations',
-				company: 'UrbanBuild',
-				logo: '/logo/avgc.png',
-			},
-			{
-				id: 3,
-				quote:
-					'Sensor reliability and data quality were excellent. The team was responsive and thorough during rollout.',
-				name: 'Priya Nair',
-				role: 'Structural Consultant',
-				company: 'SeismoTech',
-				logo: '/logo/iitlogo.jpg',
-			},
-			{
-				id: 4,
-				quote:
-					'Insightful analytics and a thoughtful UX. Our decision cycles are faster and better informed.',
-				name: 'Arjun Mehta',
-				role: 'VP Engineering',
-				company: 'Skyline Infra',
-				logo: '/logo/Fitt.png',
-			},
-			{
-				id: 5,
-				quote:
-					'From onboarding to optimization, SPPL was a partner, not just a vendor. Great experience end-to-end.',
-				name: 'Neha Gupta',
-				role: 'Program Manager',
-				company: 'BlueRiver',
-				logo: '/logo/AIIMS_New_Delhi.png',
-			},
+			{ id: 1, quote: 'We consulted Sanrachna Prahari to evaluate the structural integrity of a high-rise building. Their detailed assessment and use of cutting-edge SHM technologies provided us with proactive solutions. Their professionalism and technical prowess are unmatched.', company: 'Raman Reti Ashram', logo: encodeURI('/img/RamanReti.jpg') },
+			{ id: 2, quote: 'SPPL’s structural health monitoring solutions have greatly improved the safety and reliability of our projects. Their team is professional, responsive and delivers cost-effective systems that help us maintain and extend the life of our structures.', name: 'Avinya Greens Constructions', company: 'Avinya Greens Construction', logo: encodeURI('/logo/avgc.png') },
+			{ id: 3, quote: 'SPPL’s technology has given us confidence in the safety of the infrastructure we rely on every day. Their monitoring systems provide peace of mind by ensuring critical structures remain strong and reliable.', company: 'Mr. Siddhant Shukla', logo: encodeURI('/img/Sid.jpeg') },
+			{ id: 4, quote: 'SPPL is building innovative solutions that bring real value to the construction industry. Their focus on safety, reliability, and technology sets them apart. We appreciate their dedication and look forward to working with them as they continue to grow', company: 'FITT', logo: encodeURI('/logo/Fitt.png') },
+
 		],
 		[]
 	);
-
 	const [items, setItems] = useState(baseItems);
 	const [active, setActive] = useState(0);
 	const [isPaused, setIsPaused] = useState(false);
@@ -185,7 +144,7 @@ const Testimonials = () => {
 					<div className="mt-3 flex justify-center">
 						<div className="h-1 w-28 rounded-full bg-gradient-to-r from-sppl-blue via-sky-500 to-sppl-dark-blue" />
 					</div>
-					<p className="mt-3 text-gray-600 max-w-2xl mx-auto">Real outcomes from real deployments — reliability, clarity, and speed.</p>
+					<p className="mt-3 text-gray-600 max-w-2xl mx-auto">Real outcomes from real deployments — reliability, clarity and speed.</p>
 				</div>
 
 				<div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
@@ -247,4 +206,3 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
-

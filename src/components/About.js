@@ -76,7 +76,7 @@ const About = () => {
               <div className="group flex items-start gap-3 bg-white/80 rounded-xl shadow-sm p-4 border border-gray-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <span className="text-xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">✨</span>
                 <span className="text-base md:text-lg font-medium text-gray-800 leading-relaxed">
-                  At SPPL Sanrachna Prahari Pvt Ltd., we develop and provide advanced monitoring solutions that enable infrastructure to ‘communicate its health’ in real time.
+                  At SPPL Sanrachna Prahari Pvt Ltd., we develop and provide advanced monitoring solutions that enable infrastructure to communicate its health in real time.
                 </span>
               </div>
               <div className="group flex items-start gap-3 bg-white/80 rounded-xl shadow-sm p-4 border border-gray-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -116,7 +116,7 @@ const About = () => {
                 <span className="text-2xl">📞</span>
                 <div className="flex-1">
                   <p className="text-xs md:text-sm text-gray-600 leading-tight">Call to ask any question</p>
-                  <p className="text-base md:text-lg font-semibold text-gray-800">+91 70555 59999</p>
+                  <p className="text-base md:text-lg font-semibold text-gray-800">+91 7055559999</p>
                 </div>
               </div>
             </div>
@@ -138,20 +138,31 @@ const About = () => {
           </div>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Features Grid - unified card styling */}
+        <div className="grid gap-6 sm:gap-7 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="group relative flex flex-col rounded-2xl p-6 bg-white/95 backdrop-blur-[2px] shadow-[0_8px_24px_rgba(2,6,23,0.06)] ring-1 ring-slate-200 hover:shadow-[0_14px_38px_rgba(2,132,199,0.14)] hover:ring-sky-300 transition-all duration-300 overflow-hidden hover:-translate-y-1 hover:scale-[1.01]"
+              style={{ fontFamily: "'Poppins','Segoe UI',sans-serif" }}
             >
-              <div className="text-4xl mb-4">{feature.icon}</div>
-              <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                {feature.title}
-              </h4>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {feature.description}
-              </p>
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-full translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out bg-gradient-to-t from-sky-50 via-cyan-50 to-transparent" />
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-[width] duration-500 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-400" />
+
+              <div className="relative flex flex-col h-full">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-white to-slate-50 ring-1 ring-slate-200 text-2xl select-none shadow-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:ring-sky-300">
+                    {feature.icon}
+                  </div>
+                  <h4 className="font-semibold text-slate-900 text-base md:text-lg leading-snug tracking-tight">{feature.title}</h4>
+                </div>
+
+                <div className="mt-6 h-[3px] w-16 bg-gradient-to-r from-sky-400 via-blue-500 to-cyan-400 rounded-full scale-x-0 group-hover:scale-x-100 origin-left transition-all duration-500 translate-y-2 group-hover:translate-y-0" />
+
+                <p className="mt-4 text-slate-600 leading-relaxed text-sm md:text-[0.95rem]">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
